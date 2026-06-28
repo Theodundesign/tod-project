@@ -21,6 +21,15 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Missing required payment or order information.' })
   }
 
+  // Check if Paystack is configured
+  const paystackKey = process.env.PAYSTACK_SECRET_KEY
+  if (!paystackKey) {
+    return res.status(503).json({ 
+      error: 'Payment processing is temporarily unavailable', 
+      details: 'Paystack is not configured. Please contact support.' 
+    })
+  }
+
   try {
     const orderRef = await adminDb.collection('orders').add({
       userId,
