@@ -746,9 +746,9 @@ export default function Home(){
 
         {/* Why Choose Me Section */}
         <section className="choose-section container">
-          <div className="section-header">
-            <h2>Why choose TOD</h2>
-            <p>Every project is built with premium polish, reliable timelines, and business-focused performance.</p>
+          <div className="section-header" style={{ textAlign: 'center' }}>
+            <h2 style={{ fontSize: '2.5rem', fontWeight: '900', marginBottom: '12px', background: 'linear-gradient(135deg, #FFFFFF, rgba(255,255,255,0.9))', backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Why choose TOD</h2>
+            <p style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.7)', maxWidth: '600px', margin: '0 auto' }}>Every project is built with premium polish, reliable timelines, and business-focused performance.</p>
           </div>
           <div className="choose-grid">
             <div className="choose-card">
@@ -772,9 +772,9 @@ export default function Home(){
 
         {/* FAQ Section */}
         <section className="faq-section container">
-          <div className="section-header">
-            <h2>Frequently asked questions</h2>
-            <p>Answers to common questions about orders, accounts, and payments.</p>
+          <div className="section-header" style={{ textAlign: 'center' }}>
+            <h2 style={{ fontSize: '2.5rem', fontWeight: '900', marginBottom: '12px', background: 'linear-gradient(135deg, #FFFFFF, rgba(255,255,255,0.9))', backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Frequently asked questions</h2>
+            <p style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.7)', maxWidth: '600px', margin: '0 auto' }}>Answers to common questions about orders, accounts, and payments.</p>
           </div>
           <div className="faq-accordion">
             {FAQ.map((item, idx) => {
