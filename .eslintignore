@@ -1,0 +1,7 @@
+node_modules
+.next
+public
+.env.local
+*.min.js
+script.js
+smoke.js

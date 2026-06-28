@@ -1,0 +1,28 @@
+# Environment
+.env
+.env.local
+.env.production
+.env.production.local
+.env.development.local
+
+# Firebase
+serviceAccountKey.json
+firebase-adminsdk*.json
+
+# Logs
+logs
+*.log
+
+# Next.js
+.next
+out
+
+# Node
+node_modules
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Vercel
+.vercel

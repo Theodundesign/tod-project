@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api
+Disallow: /dashboard
+Disallow: /settings
+Disallow: /auth
+Disallow: /login
+Disallow: /register
+Disallow: /forgot
+Crawl-delay: 1
+Sitemap: https://theodundesign.com/sitemap.xml
+Host: https://theodundesign.com

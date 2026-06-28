@@ -1,0 +1,50 @@
+{
+  "url": "http://127.0.0.1:8000/",
+  "results": [
+    {
+      "viewport": {
+        "name": "mobile",
+        "width": 375,
+        "height": 812
+      },
+      "file": "resp-mobile-375x812.png",
+      "ok": true
+    },
+    {
+      "viewport": {
+        "name": "tablet",
+        "width": 768,
+        "height": 1024
+      },
+      "file": "resp-tablet-768x1024.png",
+      "ok": true
+    },
+    {
+      "viewport": {
+        "name": "desktop-1366",
+        "width": 1366,
+        "height": 768
+      },
+      "file": "resp-desktop-1366-1366x768.png",
+      "ok": true
+    },
+    {
+      "viewport": {
+        "name": "desktop-1440",
+        "width": 1440,
+        "height": 900
+      },
+      "file": "resp-desktop-1440-1440x900.png",
+      "ok": true
+    },
+    {
+      "viewport": {
+        "name": "desktop-1600",
+        "width": 1600,
+        "height": 900
+      },
+      "file": "resp-desktop-1600-1600x900.png",
+      "ok": true
+    }
+  ]
+}

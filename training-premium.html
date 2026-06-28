@@ -1,0 +1,172 @@
+<!--
+  PHASE 2.4: Premium Training & Contact Experience
+  This file contains the new premium Training section markup for The Odun Design.
+  - Glass dashboard, premium cards, categories, live stats, learning experience, preview modal, and CTA.
+-->
+<section id="training" class="training premium-training">
+  <div class="container">
+    <!-- Section Title -->
+    <div class="section-title">
+      <h2>Digital Training Academy</h2>
+      <p>Level up your skills with premium, hands-on courses led by industry experts. Learn, build, and earn certificates in a world-class digital academy.</p>
+    </div>
+
+    <!-- Live Stats Row -->
+    <div class="training-stats-row">
+      <div class="training-stat">
+        <div class="stat-number" data-animate-counter="500">500+</div>
+        <div class="stat-label">Students</div>
+      </div>
+      <div class="training-stat">
+        <div class="stat-number" data-animate-counter="20">20+</div>
+        <div class="stat-label">Courses</div>
+      </div>
+      <div class="training-stat">
+        <div class="stat-number" data-animate-counter="95">95%</div>
+        <div class="stat-label">Completion Rate</div>
+      </div>
+      <div class="training-stat">
+        <div class="stat-number" data-animate-counter="24">24/7</div>
+        <div class="stat-label">Community Support</div>
+      </div>
+    </div>
+
+    <!-- Premium Training Dashboard -->
+    <div class="training-dashboard">
+      <div class="training-grid premium-training-grid">
+        <!-- Training Cards (one per category) -->
+        <!-- Example Card: Frontend Development -->
+        <div class="training-card glass-hover" data-category="frontend">
+          <div class="training-thumb">
+            <img src="images/thumb-website-ui-design.svg" alt="Frontend Development" />
+            <span class="training-icon"><i class="fa-solid fa-code"></i></span>
+          </div>
+          <div class="training-card-content">
+            <div class="training-meta">
+              <span class="difficulty beginner">Beginner</span>
+              <span class="lessons">12 Lessons</span>
+              <span class="duration">4h 30m</span>
+            </div>
+            <h3>Frontend Development</h3>
+            <ul class="training-features">
+              <li><i class="fa-solid fa-download"></i> Downloadable Materials</li>
+              <li><i class="fa-solid fa-certificate"></i> Certificate Included</li>
+            </ul>
+            <button class="enroll-btn" data-open-modal="trainingPreviewModal" data-course="frontend">View Course</button>
+          </div>
+        </div>
+        <!-- Example Card: Full Stack Development -->
+        <div class="training-card glass-hover" data-category="fullstack">
+          <div class="training-thumb">
+            <img src="images/thumb-website-ui-design.svg" alt="Full Stack Development" />
+            <span class="training-icon"><i class="fa-solid fa-layer-group"></i></span>
+          </div>
+          <div class="training-card-content">
+            <div class="training-meta">
+              <span class="difficulty intermediate">Intermediate</span>
+              <span class="lessons">18 Lessons</span>
+              <span class="duration">7h 10m</span>
+            </div>
+            <h3>Full Stack Development</h3>
+            <ul class="training-features">
+              <li><i class="fa-solid fa-download"></i> Downloadable Materials</li>
+              <li><i class="fa-solid fa-certificate"></i> Certificate Included</li>
+            </ul>
+            <button class="enroll-btn" data-open-modal="trainingPreviewModal" data-course="fullstack">View Course</button>
+          </div>
+        </div>
+        <!-- Example Card: Graphic Design -->
+        <div class="training-card glass-hover" data-category="graphic-design">
+          <div class="training-thumb">
+            <img src="images/thumb-graphic-design.svg" alt="Graphic Design" />
+            <span class="training-icon"><i class="fa-solid fa-palette"></i></span>
+          </div>
+          <div class="training-card-content">
+            <div class="training-meta">
+              <span class="difficulty beginner">Beginner</span>
+              <span class="lessons">14 Lessons</span>
+              <span class="duration">5h 20m</span>
+            </div>
+            <h3>Graphic Design</h3>
+            <ul class="training-features">
+              <li><i class="fa-solid fa-download"></i> Downloadable Materials</li>
+              <li><i class="fa-solid fa-certificate"></i> Certificate Included</li>
+            </ul>
+            <button class="enroll-btn" data-open-modal="trainingPreviewModal" data-course="graphic-design">View Course</button>
+          </div>
+        </div>
+        <!-- Add more cards for each category as needed -->
+      </div>
+    </div>
+
+    <!-- Learning Experience Section -->
+    <div class="learning-experience">
+      <h3>Why Learn With The Odun Design?</h3>
+      <div class="learning-features-grid">
+        <div class="learning-feature glass-hover"><i class="fa-solid fa-user-graduate"></i> Mentorship Support</div>
+        <div class="learning-feature glass-hover"><i class="fa-solid fa-briefcase"></i> Real Client Projects</div>
+        <div class="learning-feature glass-hover"><i class="fa-solid fa-download"></i> Downloadable Resources</div>
+        <div class="learning-feature glass-hover"><i class="fa-solid fa-infinity"></i> Lifetime Updates</div>
+        <div class="learning-feature glass-hover"><i class="fa-solid fa-users"></i> Community Access</div>
+        <div class="learning-feature glass-hover"><i class="fa-solid fa-certificate"></i> Certificate Completion</div>
+      </div>
+    </div>
+
+    <!-- Premium CTA -->
+    <div class="training-cta">
+      <h3>Ready to Level Up Your Skills?</h3>
+      <div class="cta-actions">
+        <button class="primary-btn" data-open-modal="trainingPreviewModal">Join Training</button>
+        <button class="secondary-btn">Download Curriculum</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Training Preview Modal (Cinematic) -->
+  <div class="modal training-preview-modal" id="trainingPreviewModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="modal-tag">Course Preview</span>
+        <h2 id="modalCourseTitle">Frontend Development</h2>
+        <button class="modal-close" data-close-modal>&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="course-overview">
+          <div class="course-meta">
+            <span class="difficulty beginner">Beginner</span>
+            <span class="lessons">12 Lessons</span>
+            <span class="duration">4h 30m</span>
+            <span class="certificate"><i class="fa-solid fa-certificate"></i> Certificate</span>
+          </div>
+          <p id="modalCourseDesc">Learn HTML, CSS, JavaScript, and responsive UI design. Build real projects and earn a certificate.</p>
+          <ul class="course-features">
+            <li><i class="fa-solid fa-download"></i> Downloadable Materials</li>
+            <li><i class="fa-solid fa-briefcase"></i> Real Client Projects</li>
+            <li><i class="fa-solid fa-infinity"></i> Lifetime Updates</li>
+            <li><i class="fa-solid fa-users"></i> Community Access</li>
+          </ul>
+          <div class="course-software">
+            <span>Software Used:</span>
+            <span class="software-list"><i class="fa-brands fa-html5"></i> <i class="fa-brands fa-css3-alt"></i> <i class="fa-brands fa-js"></i> <i class="fa-brands fa-figma"></i></span>
+          </div>
+          <div class="course-pricing">
+            <span class="price">₦15,000</span>
+            <span class="level">Beginner</span>
+          </div>
+          <button class="primary-btn enroll-btn">Enroll Now</button>
+        </div>
+        <div class="course-curriculum">
+          <h4>Curriculum</h4>
+          <ul>
+            <li>Introduction to HTML & CSS</li>
+            <li>Responsive Layouts</li>
+            <li>JavaScript Essentials</li>
+            <li>UI Design Principles</li>
+            <li>Project: Landing Page</li>
+            <li>Certificate Project</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

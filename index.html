@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Odun Design</title>
+
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <link rel="stylesheet" href="style.css" id="mainStylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header container">
+
+    <div class="logo">
+      The Odun Design
+    </div>
+
+    <nav class="nav">
+      <a href="#">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#training">Training</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="cart-btn" aria-label="Cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </button>
+
+      <button class="menu-btn" aria-label="Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="tag">Creative Digital Solutions</span>
+      <h1>Design & Build Premium Digital Experiences</h1>
+      <p class="lead">Product-first web, app and brand systems — built with care, shipped with polish.</p>
+
+      <div class="search-create">
+        <div class="search-hero-container">
+          <button class="search-trigger" id="searchTrigger" aria-label="Open search">
+            <i class="fa-solid fa-search"></i>
+            <span class="search-placeholder">Search services, projects...</span>
+            <span class="search-hint">⌘K</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Floating Search Icon (appears on scroll) -->
+      <button class="floating-search-icon" id="floatingSearch" aria-label="Search" title="Search (⌘K)">
+        <i class="fa-solid fa-search"></i>
+      </button>
+
+      <!-- Premium Search Popup Modal -->
+      <div class="search-modal modal" id="searchModal">
+        <div class="search-modal-overlay" id="searchOverlay"></div>
+        <div class="search-modal-content">
+          <!-- Search Header -->
+          <div class="search-header">
+            <div class="search-input-wrapper">
+              <i class="fa-solid fa-search"></i>
+              <input 
+                type="text" 
+                id="searchInput" 
+                class="search-input" 
+                placeholder="Search services, projects, categories..."
+                autocomplete="off"
+              />
+              <button class="search-clear" id="searchClear" aria-label="Clear search">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+            <button class="search-close" id="searchClose" aria-label="Close search">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <!-- Search Suggestions Container -->
+          <div class="search-suggestions" id="searchSuggestions">
+            <!-- Recent Searches -->
+            <div class="search-group" id="recentGroup" style="display: none;">
+              <div class="search-group-title">Recent Searches</div>
+              <div id="recentSearches" class="search-items"></div>
+            </div>
+
+            <!-- Popular Services -->
+            <div class="search-group">
+              <div class="search-group-title">Popular Services</div>
+              <div class="search-items">
+                <div class="search-item" data-search-type="service" data-search-target="services">
+                  <div class="search-item-icon"><i class="fa-solid fa-palette"></i></div>
+                  <div class="search-item-content">
+                    <div class="search-item-title">Web Design</div>
+                    <div class="search-item-description">Premium web experiences</div>
+                  </div>
+                  <div class="search-item-shortcut">→</div>
+                </div>
+                <div class="search-item" data-search-type="service" data-search-target="services">
+                  <div class="search-item-icon"><i class="fa-solid fa-code"></i></div>
+                  <div class="search-item-content">
+                    <div class="search-item-title">Web Development</div>
+                    <div class="search-item-description">Full-stack solutions</div>
+                  </div>
+                  <div class="search-item-shortcut">→</div>
+                </div>
+                <div class="search-item" data-search-type="service" data-search-target="services">
+                  <div class="search-item-icon"><i class="fa-solid fa-mobile"></i></div>
+                  <div class="search-item-content">
+                    <div class="search-item-title">App Development</div>
+                    <div class="search-item-description">Native & cross-platform</div>
+                  </div>
+                  <div class="search-item-shortcut">→</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Navigation -->
+            <div class="search-group">
+              <div class="search-group-title">Quick Navigation</div>
+              <div class="search-items">
+                <div class="search-item" data-search-type="navigation" data-search-target="about">
+                  <div class="search-item-icon"><i class="fa-solid fa-user"></i></div>
+                  <div class="search-item-content">
+                    <div class="search-item-title">About Us</div>
+                    <div class="search-item-description">Meet the team</div>
+                  </div>
+                  <div class="search-item-shortcut">→</div>
+                </div>
+                <div class="search-item" data-search-type="navigation" data-search-target="portfolio">
+                  <div class="search-item-icon"><i class="fa-solid fa-briefcase"></i></div>
+                  <div class="search-item-content">
+                    <div class="search-item-title">Portfolio</div>
+                    <div class="search-item-description">Our best work</div>
+                  </div>
+                  <div class="search-item-shortcut">→</div>
+                </div>
+                <div class="search-item" data-search-type="navigation" data-search-target="contact">
+                  <div class="search-item-icon"><i class="fa-solid fa-envelope"></i></div>
+                  <div class="search-item-content">
+                    <div class="search-item-title">Get in Touch</div>
+                    <div class="search-item-description">Contact us today</div>
+                  </div>
+                  <div class="search-item-shortcut">→</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Suggested Projects -->
+            <div class="search-group">
+              <div class="search-group-title">Suggested Projects</div>
+              <div class="search-items">
+                <div class="search-item" data-search-type="category">
+                  <div class="search-item-icon"><i class="fa-solid fa-globe"></i></div>
+                  <div class="search-item-content">
+                    <div class="search-item-title">E-Commerce</div>
+                    <div class="search-item-description">Online stores</div>
+                  </div>
+                  <div class="search-item-shortcut">→</div>
+                </div>
+                <div class="search-item" data-search-type="category">
+                  <div class="search-item-icon"><i class="fa-solid fa-chart-line"></i></div>
+                  <div class="search-item-content">
+                    <div class="search-item-title">SaaS Platforms</div>
+                    <div class="search-item-description">Business software</div>
+                  </div>
+                  <div class="search-item-shortcut">→</div>
+                </div>
+                <div class="search-item" data-search-type="category">
+                  <div class="search-item-icon"><i class="fa-solid fa-image"></i></div>
+                  <div class="search-item-content">
+                    <div class="search-item-title">Portfolio Websites</div>
+                    <div class="search-item-description">Showcase your work</div>
+                  </div>
+                  <div class="search-item-shortcut">→</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Search Footer -->
+          <div class="search-footer">
+            <div class="search-footer-hint">
+              <span class="key">↵</span> <span>to select</span>
+              <span class="key">↑ ↓</span> <span>to navigate</span>
+              <span class="key">ESC</span> <span>to close</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-buttons">
+        <button class="primary-btn" data-scroll-to="contact">Start Project</button>
+        <button class="secondary-btn" data-scroll-to="portfolio">View Portfolio</button>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <div class="mockup-card float-card">
+          <img src="images/mockup.svg" alt="product mockup" loading="lazy" />
+        </div>
+    </div>
+  </section>
+
+  <!-- ABOUT US -->
+  <section id="about" class="about">
+    <div class="container">
+      <!-- Header -->
+      <div class="section-title">
+        <h2>About The Odun Design</h2>
+        <p>We craft premium digital experiences that combine thoughtful design with solid engineering.</p>
+      </div>
+
+      <!-- Founder Introduction -->
+      <div class="about-hero about-card">
+        <div class="about-hero-image float-card">
+              <!-- Desktop-only luxury contact panel -->
+              <div class="contact-glass desktop-only">
+                <h3>Let's build something premium</h3>
+                <p class="lead">We respond quickly — tell us about your project or reach us directly.</p>
+                <div class="contact-actions">
+                  <a class="contact-cta whatsapp" href="https://wa.me/2348160191823" target="_blank">WhatsApp — 08160191823</a>
+                  <a class="contact-cta email" href="mailto:theodundesign@gmail.com">Email — theodundesign@gmail.com</a>
+                  <div class="response-badge">Typical response: <strong>2–6 hrs</strong></div>
+                </div>
+                <div class="floating-support-card">
+                  <strong>Support</strong>
+                  <p>Priority assistance for onboarding and enterprise clients.</p>
+                </div>
+              </div>
+
+      <!-- Experience Timeline -->
+      <div class="about-section">
+        <div class="section-title-sub">
+          <h3>Experience Timeline</h3>
+          <p>A journey of growth, learning, and shipping great products.</p>
+        </div>
+        <div class="timeline-container">
+          <div class="timeline-item timeline-active">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content about-card">
+              <span class="timeline-date">2021</span>
+              <h4>Founded The Odun Design</h4>
+              <p>Started with a vision to deliver premium digital solutions for African brands and startups.</p>
+            </div>
+          </div>
+          <div class="timeline-item timeline-active">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content about-card">
+              <span class="timeline-date">2022</span>
+              <h4>First 50+ Projects Shipped</h4>
+              <p>Crossed the milestone of delivering 50+ successful projects across web, app, and design services.</p>
+            </div>
+          </div>
+          <div class="timeline-item timeline-active">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content about-card">
+              <span class="timeline-date">2023</span>
+              <h4>Digital Training Launch</h4>
+              <p>Launched comprehensive training courses to help aspiring designers and developers level up.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content about-card">
+              <span class="timeline-date">2024+</span>
+              <h4>Building Bigger Impact</h4>
+              <p>Scaling the team and taking on enterprise-level projects while maintaining premium quality.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mission & Values -->
+      <div class="about-section">
+        <div class="mission-grid">
+          <div class="mission-card about-card">
+            <div class="mission-icon">🎯</div>
+            <h3>Our Mission</h3>
+            <p>Empower businesses across Africa with world-class digital solutions that drive real growth and lasting impact.</p>
+          </div>
+          <div class="mission-card about-card">
+            <div class="mission-icon">✨</div>
+            <h3>Premium Quality</h3>
+            <p>Every pixel polished, every interaction smooth, every line of code intentional and scalable.</p>
+          </div>
+          <div class="mission-card about-card">
+            <div class="mission-icon">🤝</div>
+            <h3>Partnership First</h3>
+            <p>We don't just build for clients — we partner with them to understand vision and deliver excellence.</p>
+          </div>
+          <div class="mission-card about-card">
+            <div class="mission-icon">🚀</div>
+            <h3>Rapid Delivery</h3>
+            <p>Fast turnarounds without compromising on quality. We ship, we iterate, we improve.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why Choose Us -->
+      <div class="about-section">
+        <div class="section-title-sub">
+          <h3>Why Choose The Odun Design</h3>
+          <p>What sets us apart from the rest.</p>
+        </div>
+        <div class="benefits-grid">
+          <div class="benefit-card about-card">
+            <div class="benefit-number">01</div>
+            <h4>Premium Design Philosophy</h4>
+            <p>Inspired by Apple, Stripe, and Linear. Every project gets our signature polish and attention to detail.</p>
+          </div>
+          <div class="benefit-card about-card">
+            <div class="benefit-number">02</div>
+            <h4>Full-Stack Expertise</h4>
+            <p>Web, mobile, design, branding — we handle the complete product experience end-to-end.</p>
+          </div>
+          <div class="benefit-card about-card">
+            <div class="benefit-number">03</div>
+            <h4>Fast, Reliable Delivery</h4>
+            <p>Clear timelines, transparent communication, and on-time delivery — always.</p>
+          </div>
+          <div class="benefit-card about-card">
+            <div class="benefit-number">04</div>
+            <h4>Africa-First Pricing</h4>
+            <p>Premium quality at prices that make sense for African businesses. No hidden costs.</p>
+          </div>
+          <div class="benefit-card about-card">
+            <div class="benefit-number">05</div>
+            <h4>Ongoing Support</h4>
+            <p>Your project doesn't end at delivery. We provide support, updates, and iterations.</p>
+          </div>
+          <div class="benefit-card about-card">
+            <div class="benefit-number">06</div>
+            <h4>Proven Track Record</h4>
+            <p>50+ projects shipped. 100+ happy clients. Consistent 5-star reviews and recommendations.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills & Expertise -->
+      <div class="about-section">
+        <div class="section-title-sub">
+          <h3>Skills & Expertise</h3>
+          <p>Proficiency across design, development, and strategy.</p>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-category about-card">
+            <h4>Product Design</h4>
+            <div class="skill-list">
+              <span class="skill-tag">UI/UX Design</span>
+              <span class="skill-tag">Figma</span>
+              <span class="skill-tag">Prototyping</span>
+              <span class="skill-tag">Design Systems</span>
+              <span class="skill-tag">Brand Identity</span>
+            </div>
+          </div>
+          <div class="skill-category about-card">
+            <h4>Web Development</h4>
+            <div class="skill-list">
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">Next.js</span>
+              <span class="skill-tag">HTML/CSS/JS</span>
+              <span class="skill-tag">Firebase</span>
+              <span class="skill-tag">Responsive Design</span>
+            </div>
+          </div>
+          <div class="skill-category about-card">
+            <h4>Mobile Development</h4>
+            <div class="skill-list">
+              <span class="skill-tag">Android (Kotlin)</span>
+              <span class="skill-tag">Cross-platform</span>
+              <span class="skill-tag">App UI</span>
+              <span class="skill-tag">Performance</span>
+              <span class="skill-tag">APIs</span>
+            </div>
+          </div>
+          <div class="skill-category about-card">
+            <h4>Strategy & Growth</h4>
+            <div class="skill-list">
+              <span class="skill-tag">Product Strategy</span>
+              <span class="skill-tag">User Research</span>
+              <span class="skill-tag">Conversion Optimization</span>
+              <span class="skill-tag">Analytics</span>
+              <span class="skill-tag">Branding</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Awards & Recognition -->
+      <div class="about-section">
+        <div class="section-title-sub">
+          <h3>Awards & Recognition</h3>
+          <p>Recognition from industry leaders and satisfied clients.</p>
+        </div>
+        <div class="awards-grid">
+          <div class="award-card about-card">
+            <div class="award-badge">⭐</div>
+            <h4>Best Product Design 2023</h4>
+            <p>Nigerian Design Awards</p>
+            <span class="award-meta">For innovative SaaS platform design</span>
+          </div>
+          <div class="award-card about-card">
+            <div class="award-badge">🏆</div>
+            <h4>Top Web Developer</h4>
+            <p>Africa Tech Community</p>
+            <span class="award-meta">For exceptional delivery quality</span>
+          </div>
+          <div class="award-card about-card">
+            <div class="award-badge">🎯</div>
+            <h4>Client Choice Award</h4>
+            <p>The Odun Community</p>
+            <span class="award-meta">100% client satisfaction rate</span>
+          </div>
+          <div class="award-card about-card">
+            <div class="award-badge">📱</div>
+            <h4>Featured Designer</h4>
+            <p>Design Publications</p>
+            <span class="award-meta">Multiple magazine features</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Animated Statistics -->
+      <div class="about-section">
+        <div class="stats-container">
+          <div class="stat-card about-card">
+            <div class="stat-number" data-target="50">0</div>
+            <div class="stat-label">Projects Shipped</div>
+          </div>
+          <div class="stat-card about-card">
+            <div class="stat-number" data-target="100">0</div>
+            <div class="stat-label">Happy Clients</div>
+          </div>
+          <div class="stat-card about-card">
+            <div class="stat-number" data-target="3">0</div>
+            <div class="stat-label">Years Experience</div>
+            <span class="stat-plus">+</span>
+          </div>
+          <div class="stat-card about-card">
+            <div class="stat-number" data-target="98">0</div>
+            <div class="stat-label">Client Satisfaction</div>
+            <span class="stat-percent">%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Client Trust Section -->
+      <div class="about-section trust-section">
+        <div class="section-title-sub">
+          <h3>Trusted By Leading Brands</h3>
+          <p>Partnerships with companies across multiple industries.</p>
+        </div>
+        <div class="trust-grid">
+          <div class="trust-logo">ScaleCo</div>
+          <div class="trust-logo">BrightShop</div>
+          <div class="trust-logo">Nova Agency</div>
+          <div class="trust-logo">TechHub Nigeria</div>
+          <div class="trust-logo">Startup Hub</div>
+          <div class="trust-logo">DigitalVentures</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="services">
+
+    <div class="section-title">
+      <h2>Our Services</h2>
+      <p>
+        Smart digital solutions built for modern businesses.
+      </div>
+      <div class="hero-image">
+          <div class="mockup-card float-card">
+          <img src="images/mockup.svg" alt="product mockup" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- DESKTOP-ONLY CINEMATIC HERO (Phase 3) -->
+    <section class="desktop-hero" aria-hidden="false">
+      <div class="desktop-hero-bg">
+        <div class="desktop-glow-left"></div>
+        <div class="desktop-glow-right"></div>
+        <div class="desktop-ambient"></div>
+        <div class="desktop-noise"></div>
+      </div>
+
+      <div class="desktop-hero-inner">
+        <div class="desktop-hero-left">
+          <div class="desktop-hero-content">
+            <div class="hero-badge">Premium • Enterprise</div>
+            <h1 class="desktop-hero-title">Premium <span class="gradient-word">Digital Experiences</span> for Visionary Brands</h1>
+            <p class="desktop-hero-subtext">We craft cinematic, investor-grade web and product experiences for startups, agencies, and modern businesses across Africa. Bold design, solid engineering, delightful details.</p>
+
+            <div class="desktop-hero-search" role="search" aria-label="Command search">
+              <button class="search-trigger desktop-search" id="desktopSearchTrigger" aria-label="Open search"> <i class="fa-solid fa-magnifying-glass"></i> Quick Command <span class="key">⌘K</span></button>
+            </div>
+
+            <div class="desktop-hero-ctas">
+              <button class="primary-btn desktop-cta" data-scroll-to="contact">Start Project</button>
+              <button class="secondary-btn desktop-cta" data-scroll-to="portfolio">View Portfolio</button>
+            </div>
+
+            <div class="desktop-trust-row">
+              <span class="trust-text">Trusted by startups, creators, and modern businesses</span>
+              <div class="trust-pills">
+                <span class="pill">Web Systems</span>
+                <span class="pill">Mobile Apps</span>
+                <span class="pill">Branding</span>
+                <span class="pill">Product Design</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="desktop-hero-right">
+          <div class="desktop-visual-wrap" aria-hidden="true">
+            <div class="mockup-orb"></div>
+            <!-- Realistic SVG dashboard mockup (layered) -->
+            <div class="mockup-main" data-layer="0">
+              <div class="ui-sidebar">
+                <div class="brand">TheOdun</div>
+                <nav class="sidebar-nav">
+                  <span class="item active">Dashboard</span>
+                  <span class="item">Projects</span>
+                  <span class="item">Analytics</span>
+                  <span class="item">Settings</span>
+                </nav>
+              </div>
+              <div class="ui-topbar">
+                <div class="top-controls">
+                  <div class="dot red"></div>
+                  <div class="dot yellow"></div>
+                  <div class="dot green"></div>
+                </div>
+                <div class="top-actions">
+                  <div class="top-pill">Team</div>
+                  <div class="top-pill">Profile</div>
+                </div>
+              </div>
+              <div class="ui-graph">
+                <svg viewBox="0 0 600 160" preserveAspectRatio="none" class="graph-svg">
+                  <defs>
+                    <linearGradient id="g1" x1="0%" x2="100%">
+                      <stop offset="0%" stop-color="#6EE7F7" />
+                      <stop offset="100%" stop-color="#6D28D9" />
+                    </linearGradient>
+                  </defs>
+                  <path class="graph-line" d="M0,120 C80,30 160,80 240,70 C320,60 400,30 480,50 C560,80 640,40 720,60" stroke="url(#g1)" stroke-width="4" fill="none" stroke-linecap="round" />
+                </svg>
+                <div class="graph-pulse"></div>
+              </div>
+              <div class="ui-stats">
+                <div class="stat"> <div class="stat-num">+48%<span class="muted">Growth</span></div></div>
+                <div class="stat"> <div class="stat-num">₦2.4M<span class="muted">Revenue</span></div></div>
+                <div class="stat"> <div class="stat-num">12<span class="muted">Active</span></div></div>
+              </div>
+              <div class="ui-feed">
+                <div class="feed-item"><strong>New:</strong> Client inquiry — <span class="time">2m</span></div>
+                <div class="feed-item"><strong>Note:</strong> Design review scheduled — <span class="time">1h</span></div>
+              </div>
+            </div>
+
+            <div class="mockup-analytics" data-layer="1">
+              <div class="mini-chart">
+                <svg viewBox="0 0 120 60" preserveAspectRatio="none"><path d="M0,50 C20,20 40,30 60,18 C80,6 100,28 120,12" stroke="rgba(255,255,255,0.9)" stroke-width="2" fill="none"/></svg>
+              </div>
+              <div class="mini-stats">
+                <div class="mini">+48% Growth</div>
+                <div class="mini">Engagement ↑</div>
+              </div>
+            </div>
+
+            <div class="mockup-note" data-layer="2">
+              <div class="status-pill"><span class="status-dot online"></span>12+ Projects Active</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Duplicate / malformed about block removed -->
+    <!-- The main About section appears earlier; cleaned duplicate removed to avoid duplicate IDs and improve structure. -->
+
+  <!-- DASHBOARD PREVIEW -->
+  <section class="dashboard-preview">
+
+    <div class="section-title">
+      <h2>Client Dashboard</h2>
+      <p>
+        Track orders, download files, view invoices, and chat with admin.
+      </p>
+    </div>
+
+    <div class="dashboard-grid">
+      <div class="dashboard-card dashboard-orders" id="orderList">
+        <h3>Active Orders</h3>
+        <div class="order-empty" id="orderEmpty">No active orders yet. Place a design order to get started.</div>
+        <div class="order-items" id="orderItems"></div>
+      </div>
+
+      <div class="dashboard-card dashboard-details" id="orderDetails">
+        <h3>Order status</h3>
+        <div class="order-summary-card" id="orderDetailCard">
+          <p class="muted">Select an order to view tracking, downloads, invoice and reorder options.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- TRAINING -->
+  <!-- Premium Training section integrated (Phase 2.5) -->
+  <section id="training" class="training premium-training">
+    <div class="container">
+      <div class="section-title">
+        <h2>Digital Training Academy</h2>
+        <p>Level up your skills with premium, hands-on courses led by industry experts. Learn, build, and earn certificates in a world-class digital academy.</p>
+      </div>
+
+      <div class="training-stats-row">
+        <div class="training-stat">
+          <div class="stat-number" data-animate-counter="500">500+</div>
+          <div class="stat-label">Students</div>
+        </div>
+        <div class="training-stat">
+          <div class="stat-number" data-animate-counter="20">20+</div>
+          <div class="stat-label">Courses</div>
+        </div>
+        <div class="training-stat">
+          <div class="stat-number" data-animate-counter="95">95%</div>
+          <div class="stat-label">Completion Rate</div>
+        </div>
+        <div class="training-stat">
+          <div class="stat-number" data-animate-counter="24">24/7</div>
+          <div class="stat-label">Community Support</div>
+        </div>
+      </div>
+
+      <div class="training-dashboard">
+        <div class="training-grid premium-training-grid">
+          <div class="training-card glass-hover" data-category="frontend">
+            <div class="training-thumb">
+              <img src="images/thumb-website-ui-design.svg" alt="Frontend Development" />
+              <span class="training-icon"><i class="fa-solid fa-code"></i></span>
+            </div>
+            <div class="training-card-content">
+              <div class="training-meta">
+                <span class="difficulty beginner">Beginner</span>
+                <span class="lessons">12 Lessons</span>
+                <span class="duration">4h 30m</span>
+              </div>
+              <h3>Frontend Development</h3>
+              <ul class="training-features">
+                <li><i class="fa-solid fa-download"></i> Downloadable Materials</li>
+                <li><i class="fa-solid fa-certificate"></i> Certificate Included</li>
+              </ul>
+              <button class="enroll-btn primary-btn" data-open-modal="trainingPreviewModal" data-course="frontend">View Course</button>
+            </div>
+          </div>
+
+          <div class="training-card glass-hover" data-category="fullstack">
+            <div class="training-thumb">
+              <img src="images/thumb-website-ui-design.svg" alt="Full Stack Development" />
+              <span class="training-icon"><i class="fa-solid fa-layer-group"></i></span>
+            </div>
+            <div class="training-card-content">
+              <div class="training-meta">
+                <span class="difficulty intermediate">Intermediate</span>
+                <span class="lessons">18 Lessons</span>
+                <span class="duration">7h 10m</span>
+              </div>
+              <h3>Full Stack Development</h3>
+              <ul class="training-features">
+                <li><i class="fa-solid fa-download"></i> Downloadable Materials</li>
+                <li><i class="fa-solid fa-certificate"></i> Certificate Included</li>
+              </ul>
+              <button class="enroll-btn primary-btn" data-open-modal="trainingPreviewModal" data-course="fullstack">View Course</button>
+            </div>
+          </div>
+
+          <div class="training-card glass-hover" data-category="graphic-design">
+            <div class="training-thumb">
+              <img src="images/thumb-graphic-design.svg" alt="Graphic Design" />
+              <span class="training-icon"><i class="fa-solid fa-palette"></i></span>
+            </div>
+            <div class="training-card-content">
+              <div class="training-meta">
+                <span class="difficulty beginner">Beginner</span>
+                <span class="lessons">14 Lessons</span>
+                <span class="duration">5h 20m</span>
+              </div>
+              <h3>Graphic Design</h3>
+              <ul class="training-features">
+                <li><i class="fa-solid fa-download"></i> Downloadable Materials</li>
+                <li><i class="fa-solid fa-certificate"></i> Certificate Included</li>
+              </ul>
+              <button class="enroll-btn primary-btn" data-open-modal="trainingPreviewModal" data-course="graphic-design">View Course</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="learning-experience">
+        <h3>Why Learn With The Odun Design?</h3>
+        <div class="learning-features-grid">
+          <div class="learning-feature glass-hover"><i class="fa-solid fa-user-graduate"></i> Mentorship Support</div>
+          <div class="learning-feature glass-hover"><i class="fa-solid fa-briefcase"></i> Real Client Projects</div>
+          <div class="learning-feature glass-hover"><i class="fa-solid fa-download"></i> Downloadable Resources</div>
+          <div class="learning-feature glass-hover"><i class="fa-solid fa-infinity"></i> Lifetime Updates</div>
+          <div class="learning-feature glass-hover"><i class="fa-solid fa-users"></i> Community Access</div>
+          <div class="learning-feature glass-hover"><i class="fa-solid fa-certificate"></i> Certificate Completion</div>
+        </div>
+      </div>
+
+      <div class="training-cta">
+        <h3>Ready to Level Up Your Skills?</h3>
+        <div class="cta-actions">
+              <a class="primary-btn" href="/training">Join Training</a>
+          <button class="secondary-btn">Download Curriculum</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="modal training-preview-modal" id="trainingPreviewModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="modal-tag">Course Preview</span>
+          <h2 id="modalCourseTitle">Frontend Development</h2>
+          <button class="modal-close" data-close-modal>&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="course-overview">
+            <div class="course-meta">
+              <span class="difficulty beginner">Beginner</span>
+              <span class="lessons">12 Lessons</span>
+              <span class="duration">4h 30m</span>
+              <span class="certificate"><i class="fa-solid fa-certificate"></i> Certificate</span>
+            </div>
+            <p id="modalCourseDesc">Learn HTML, CSS, JavaScript, and responsive UI design. Build real projects and earn a certificate.</p>
+            <ul class="course-features">
+              <li><i class="fa-solid fa-download"></i> Downloadable Materials</li>
+              <li><i class="fa-solid fa-briefcase"></i> Real Client Projects</li>
+              <li><i class="fa-solid fa-infinity"></i> Lifetime Updates</li>
+              <li><i class="fa-solid fa-users"></i> Community Access</li>
+            </ul>
+            <div class="course-software">
+              <span>Software Used:</span>
+              <span class="software-list"><i class="fa-brands fa-html5"></i> <i class="fa-brands fa-css3-alt"></i> <i class="fa-brands fa-js"></i> <i class="fa-brands fa-figma"></i></span>
+            </div>
+            <div class="course-pricing">
+              <span class="price">₦15,000</span>
+              <span class="level">Beginner</span>
+            </div>
+            <button class="primary-btn enroll-btn">Enroll Now</button>
+          </div>
+          <div class="course-curriculum">
+            <h4>Curriculum</h4>
+            <ul>
+              <li>Introduction to HTML & CSS</li>
+              <li>Responsive Layouts</li>
+              <li>JavaScript Essentials</li>
+              <li>UI Design Principles</li>
+              <li>Project: Landing Page</li>
+              <li>Certificate Project</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- PORTFOLIO (Premium Version) -->
+  <section id="portfolio" class="portfolio premium-portfolio">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Best Work</h2>
+        <p>Curated case studies showcasing product thinking, craftsmanship, and measurable results.</p>
+      </div>
+
+      <!-- Portfolio Filters -->
+      <div class="portfolio-filters">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="app">Mobile</button>
+        <button class="filter-btn" data-filter="design">Design</button>
+        <button class="filter-btn" data-filter="branding">Branding</button>
+      </div>
+
+      <!-- Portfolio Grid -->
+      <div class="portfolio-grid-premium">
+        <!-- Case Study 1: E-commerce Platform -->
+        <div class="portfolio-case-study" data-category="web">
+          <div class="portfolio-case-image">
+            <img src="images/portfolio-1.svg" alt="E-commerce Platform Case Study" />
+            <div class="portfolio-overlay">
+              <button class="view-case-btn" data-open-modal="caseStudyModal">View Case Study</button>
+            </div>
+          </div>
+          <div class="portfolio-case-content about-card">
+            <span class="portfolio-tag web-tag">Web Development</span>
+            <h3>Modern E-commerce Platform</h3>
+            <p>A premium shopping experience for an African fashion retailer. 40% increase in conversion rate.</p>
+            <div class="portfolio-stats">
+              <div><strong>₦1.2M</strong><span>Project value</span></div>
+              <div><strong>6 weeks</strong><span>Delivery</span></div>
+              <div><strong>+40%</strong><span>Conversion lift</span></div>
+            </div>
+            <div class="portfolio-details">
+              <p><strong>Challenge:</strong> Legacy site with poor UX and slow performance.</p>
+              <p><strong>Solution:</strong> Rebuilt with React, optimized images, streamlined checkout.</p>
+              <p><strong>Result:</strong> 40% conversion increase, 60% faster load times.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case Study 2: Mobile App -->
+        <div class="portfolio-case-study" data-category="app">
+          <div class="portfolio-case-image">
+            <img src="images/portfolio-2.svg" alt="Delivery App Case Study" />
+            <div class="portfolio-overlay">
+              <button class="view-case-btn" data-open-modal="caseStudyModal">View Case Study</button>
+            </div>
+          </div>
+          <div class="portfolio-case-content about-card">
+            <span class="portfolio-tag app-tag">Mobile App</span>
+            <h3>Real-time Delivery Tracking App</h3>
+            <p>Cross-platform mobile app for logistics. 10K+ active users, 500+ daily deliveries.</p>
+            <div class="portfolio-stats">
+              <div><strong>₦1.8M</strong><span>Project value</span></div>
+              <div><strong>8 weeks</strong><span>Delivery</span></div>
+              <div><strong>10K+</strong><span>Active users</span></div>
+            </div>
+            <div class="portfolio-details">
+              <p><strong>Challenge:</strong> Need a scalable app for growing logistics company.</p>
+              <p><strong>Solution:</strong> Cross-platform app with real-time tracking and notifications.</p>
+              <p><strong>Result:</strong> 10K+ downloads, 4.8-star rating, seamless operations.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case Study 3: Brand Identity -->
+        <div class="portfolio-case-study" data-category="branding design">
+          <div class="portfolio-case-image">
+            <img src="images/portfolio-3.svg" alt="Brand Identity Case Study" />
+            <div class="portfolio-overlay">
+              <button class="view-case-btn" data-open-modal="caseStudyModal">View Case Study</button>
+            </div>
+          </div>
+          <div class="portfolio-case-content about-card">
+            <span class="portfolio-tag design-tag">Branding</span>
+            <h3>Premium Brand Identity System</h3>
+            <p>Complete visual identity for tech startup. Used across 50+ marketing touchpoints.</p>
+            <div class="portfolio-stats">
+              <div><strong>₦850K</strong><span>Project value</span></div>
+              <div><strong>3 weeks</strong><span>Delivery</span></div>
+              <div><strong>50+</strong><span>Deliverables</span></div>
+            </div>
+            <div class="portfolio-details">
+              <p><strong>Challenge:</strong> Generic startup brand needing premium positioning.</p>
+              <p><strong>Solution:</strong> Complete brand system with logo, typography, guidelines.</p>
+              <p><strong>Result:</strong> Cohesive premium brand, increased investor confidence.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case Study 4: SaaS Dashboard -->
+        <div class="portfolio-case-study" data-category="web">
+          <div class="portfolio-case-image">
+            <img src="images/portfolio-1.svg" alt="Analytics Dashboard Case Study" />
+            <div class="portfolio-overlay">
+              <button class="view-case-btn" data-open-modal="caseStudyModal">View Case Study</button>
+            </div>
+          </div>
+          <div class="portfolio-case-content about-card">
+            <span class="portfolio-tag web-tag">Web Development</span>
+            <h3>Enterprise Analytics Dashboard</h3>
+            <p>Complex data visualization for enterprise clients. Real-time insights and reporting.</p>
+            <div class="portfolio-stats">
+              <div><strong>₦1.95M</strong><span>Project value</span></div>
+              <div><strong>10 weeks</strong><span>Delivery</span></div>
+              <div><strong>200+</strong><span>Data points</span></div>
+            </div>
+            <div class="portfolio-details">
+              <p><strong>Challenge:</strong> Complex data needs intuitive visual presentation.</p>
+              <p><strong>Solution:</strong> Custom dashboard with interactive charts and filters.</p>
+              <p><strong>Result:</strong> Reduced decision-making time by 50%.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case Study 5: Mobile Learning App -->
+        <div class="portfolio-case-study" data-category="app design">
+          <div class="portfolio-case-image">
+            <img src="images/portfolio-2.svg" alt="Learning Platform Case Study" />
+            <div class="portfolio-overlay">
+              <button class="view-case-btn" data-open-modal="caseStudyModal">View Case Study</button>
+            </div>
+          </div>
+          <div class="portfolio-case-content about-card">
+            <span class="portfolio-tag app-tag">Mobile App</span>
+            <h3>Interactive Learning Platform</h3>
+            <p>Engaging educational app with gamification. 50K+ students on platform.</p>
+            <div class="portfolio-stats">
+              <div><strong>₦1.55M</strong><span>Project value</span></div>
+              <div><strong>7 weeks</strong><span>Delivery</span></div>
+              <div><strong>50K+</strong><span>Students</span></div>
+            </div>
+            <div class="portfolio-details">
+              <p><strong>Challenge:</strong> Make learning engaging and interactive for youth.</p>
+              <p><strong>Solution:</strong> App with quizzes, progress tracking, and rewards.</p>
+              <p><strong>Result:</strong> 90% completion rate, viral growth.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case Study 6: Corporate Website -->
+        <div class="portfolio-case-study" data-category="web design">
+          <div class="portfolio-case-image">
+            <img src="images/portfolio-3.svg" alt="Corporate Website Case Study" />
+            <div class="portfolio-overlay">
+              <button class="view-case-btn" data-open-modal="caseStudyModal">View Case Study</button>
+            </div>
+          </div>
+          <div class="portfolio-case-content about-card">
+            <span class="portfolio-tag web-tag">Web Development</span>
+            <h3>Enterprise Corporate Website</h3>
+            <p>Premium web presence for Fortune 500 subsidiary. Generated 100+ qualified leads.</p>
+            <div class="portfolio-stats">
+              <div><strong>₦1.1M</strong><span>Project value</span></div>
+              <div><strong>5 weeks</strong><span>Delivery</span></div>
+              <div><strong>100+</strong><span>Monthly leads</span></div>
+            </div>
+            <div class="portfolio-details">
+              <p><strong>Challenge:</strong> Premium corporate presence that stands out.</p>
+              <p><strong>Solution:</strong> Modern website with premium design and CMS.</p>
+              <p><strong>Result:</strong> 100+ leads/month, strong brand presence.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA for more portfolio -->
+      <div class="portfolio-cta about-card">
+        <h3>Have a project in mind?</h3>
+        <p>Let's discuss how we can bring your vision to life with our premium design and development expertise.</p>
+        <button class="primary-btn" data-open-modal="contact-cta-modal">Start Your Project</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="section-title">
+      <h2>Client Stories</h2>
+      <p>Short testimonials from product-focused partners.</p>
+    </div>
+
+    <div class="testimonial-slider">
+      <blockquote class="testimonial">"The Odun Design helped us rethink our product — faster delivery, clearer UI." — Product Lead, ScaleCo</blockquote>
+      <blockquote class="testimonial">"Polished design and rock-solid implementation across web and mobile." — Founder, BrightShop</blockquote>
+      <blockquote class="testimonial">"A premium experience and delightful onboarding for our team." — Head of Growth, Nova</blockquote>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="cta-card float-card">
+      <h3>Ready to ship something great?</h3>
+      <p>Book a short consult and we'll draft a tailored plan.</p>
+      <div class="cta-actions">
+        <button class="secondary-btn" data-scroll-to="contact">Get Started</button>
+        <button class="primary-btn">Book Consultation</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+
+    <h3>The Odun Design</h3>
+
+    <p>
+      Creative digital solutions for modern businesses.
+    </p>
+
+  </footer>
+
+  <!-- Case Study Modal -->
+  <div class="modal" id="caseStudyModal">
+    <div class="modal-content case-study-modal">
+      <span class="close" data-close-modal>&times;</span>
+      <h2>Case Study: Modern E-commerce Platform</h2>
+      <p class="lead">Building a premium shopping experience that increased conversions by 40%</p>
+      
+      <div class="case-study-section">
+        <h3>The Challenge</h3>
+        <p>The client had an aging e-commerce platform with poor user experience and slow load times. Their conversion rate was significantly below industry benchmarks, and they were losing revenue to competitors with better digital experiences.</p>
+      </div>
+
+      <div class="case-study-section">
+        <h3>Our Approach</h3>
+        <ul>
+          <li>Comprehensive UX audit and user research</li>
+          <li>Modern, responsive design following premium principles</li>
+          <li>Performance optimization and fast load times</li>
+          <li>Streamlined checkout process</li>
+          <li>Integration with payment and inventory systems</li>
+        </ul>
+      </div>
+
+      <div class="case-study-section">
+        <h3>The Results</h3>
+        <ul>
+          <li><strong>40% increase</strong> in conversion rate</li>
+          <li><strong>60% reduction</strong> in page load time</li>
+          <li><strong>3x growth</strong> in monthly revenue</li>
+          <li><strong>95% customer satisfaction</strong> rating</li>
+        </ul>
+      </div>
+
+      <div class="case-study-cta">
+        <p>Interested in similar results for your business?</p>
+        <button class="primary-btn" data-close-modal data-open-modal="contact-cta-modal">Let's Talk</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Premium Contact CTA Modal -->
+  <div class="modal" id="contact-cta-modal">
+    <div class="modal-content contact-cta-modal">
+      <span class="close" data-close-modal>&times;</span>
+      <div class="contact-cta-content">
+        <h2>Let's Build Something Great</h2>
+        <p class="lead">Tell us about your project and let's explore how we can help.</p>
+        
+        <form class="contact-form" id="contactForm" onsubmit="handleContactSubmit(event)">
+          <div class="form-group">
+            <input type="text" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Email address" required />
+          </div>
+          <div class="form-group">
+            <input type="tel" placeholder="WhatsApp number" />
+          </div>
+          <div class="form-group">
+            <select required>
+              <option value="">What do you need?</option>
+              <option value="web">Web Development</option>
+              <option value="app">Mobile App</option>
+              <option value="design">Design & Branding</option>
+              <option value="other">Something Else</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea placeholder="Tell us about your project..." rows="4" required></textarea>
+          </div>
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" required />
+              I agree to receive updates about my project
+            </label>
+          </div>
+          <button type="submit" class="primary-btn" style="width: 100%;">Send Message</button>
+        </form>
+
+        <div class="contact-methods">
+          <p class="contact-meta">Or reach us directly:</p>
+            <div class="contact-links">
+            <a href="https://wa.me/2348160191823" target="_blank" class="contact-link" rel="noopener">
+              <span>WhatsApp</span>
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="mailto:contact@theodundesign.com" class="contact-link">
+              <span>Email</span>
+              <i class="fa-solid fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODALS -->
+
+  <div class="modal" id="webModal">
+    <div class="modal-content">
+
+      <span class="close" data-close-modal>
+        &times;
+      </span>
+
+      <h2>Web Development</h2>
+
+      <p>
+        Business websites, e-commerce, dashboards, and SaaS platforms.
+      </p>
+
+      <p>
+        Delivery Time: 2–3 Weeks
+      </p>
+
+      <button class="primary-btn">
+        Add To Cart
+      </button>
+
+    </div>
+  </div>
+
+  <div class="modal" id="appModal">
+    <div class="modal-content">
+
+      <span class="close" data-close-modal>
+        &times;
+      </span>
+
+      <h2>App Development</h2>
+
+      <p>
+        Android apps, modern UI systems, and mobile experiences.
+      </p>
+
+      <button class="primary-btn">
+        Add To Cart
+      </button>
+
+    </div>
+  </div>
+
+  <div class="modal" id="designModal">
+    <div class="modal-content">
+
+      <span class="close" data-close-modal>
+        &times;
+      </span>
+
+      <h2>Graphic Design</h2>
+
+      <p>
+        Logos, flyers, branding kits, social media content.
+      </p>
+
+      <p>
+        Delivery Time: 24 Hours
+      </p>
+
+      <button class="primary-btn">
+        Add To Cart
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Onboarding modal (expandable steps) -->
+  <div class="modal" id="onboardModal">
+    <div class="modal-content onboard">
+      <span class="close" data-close-modal>&times;</span>
+      <h2>Quick Project Onboarding</h2>
+      <div class="onboard-step" data-step="1">
+        <p>What would you like to build today?</p>
+        <div class="onboard-actions">
+          <button class="secondary-btn" data-choice="website">Website</button>
+          <button class="secondary-btn" data-choice="app">App</button>
+          <button class="secondary-btn" data-choice="design">Design</button>
+        </div>
+      </div>
+      <div class="onboard-step hide" data-step="2">
+        <p>Great — share a brief description (or paste a link)</p>
+        <textarea id="brief" rows="4" placeholder="Project brief or link"></textarea>
+        <div style="margin-top:12px"><button class="primary-btn" id="submitBrief">Continue</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fullscreen service checkout modal -->
+  <div class="modal fullscreen" id="serviceModal">
+    <div class="modal-content fullscreen">
+      <div class="modal-header">
+        <div>
+          <span class="modal-tag">Checkout</span>
+          <h2>Select your service plan</h2>
+          <p class="modal-description">Choose a service group and plan cost. This will later connect to Paystack with a pending success flow.</p>
+        </div>
+        <button class="modal-close" data-close-modal>&times;</button>
+      </div>
+      <div class="service-meta">
+        <div class="service-summary">
+          <strong id="serviceSelected">Web Development</strong>
+          <span id="serviceDescription">E-commerce, brand websites, and SaaS portals.</span>
+        </div>
+        <div class="service-budget">Starting from <strong id="serviceStarting">₦750,000</strong></div>
+      </div>
+      <div class="service-choices">
+        <button type="button" class="service-group active" data-service="Web Development">Web Development</button>
+        <button type="button" class="service-group" data-service="App Development">App Development</button>
+        <button type="button" class="service-group" data-service="Graphic Design">Graphic Design</button>
+      </div>
+      <div class="plan-grid" id="planGrid">
+        <article class="plan-card selected" data-service="Web Development" data-plan="Starter" data-price="750000">
+          <span class="plan-type">Starter</span>
+          <strong>₦750,000</strong>
+          <p>Landing page + CMS entry, fast delivery.</p>
+        </article>
+        <article class="plan-card" data-service="Web Development" data-plan="Growth" data-price="1250000">
+          <span class="plan-type">Growth</span>
+          <strong>₦1,250,000</strong>
+          <p>Multi-page site, dashboard, marketing setup.</p>
+        </article>
+        <article class="plan-card" data-service="App Development" data-plan="Launch" data-price="1050000">
+          <span class="plan-type">Launch</span>
+          <strong>₦1,050,000</strong>
+          <p>Mobile app MVP, cross-platform shipping.</p>
+        </article>
+        <article class="plan-card" data-service="App Development" data-plan="Scale" data-price="1850000">
+          <span class="plan-type">Scale</span>
+          <strong>₦1,850,000</strong>
+          <p>App platform, backend, analytics, support.</p>
+        </article>
+        <article class="plan-card" data-service="Graphic Design" data-plan="Brand" data-price="420000">
+          <span class="plan-type">Brand</span>
+          <strong>₦420,000</strong>
+          <p>Logo, system, brand guidelines.</p>
+        </article>
+        <article class="plan-card" data-service="Graphic Design" data-plan="Premium" data-price="780000">
+          <span class="plan-type">Premium</span>
+          <strong>₦780,000</strong>
+          <p>Full visual identity, campaign assets.</p>
+        </article>
+      </div>
+
+      <div class="graphic-order-panel hide" id="graphicOrderPanel">
+        <!-- Multi-step wizard progress bar -->
+        <div class="wizard-progress-container">
+          <div class="wizard-progress-bar" id="wizardProgressBar" style="width:25%"></div>
+          <div class="wizard-steps">
+            <button type="button" class="step-indicator active" data-step="1">1. Preview</button>
+            <button type="button" class="step-indicator" data-step="2">2. Customize</button>
+            <button type="button" class="step-indicator" data-step="3">3. Contact</button>
+            <button type="button" class="step-indicator" data-step="4">4. Review</button>
+          </div>
+        </div>
+
+        <!-- STEP 1: Preview & Quick Info -->
+        <div class="wizard-step" data-step="1">
+          <h3>Preview Your Project Category</h3>
+          <div class="step-content">
+            <div class="category-preview-card">
+              <img id="categoryPreviewImage" src="images/thumb-church-flyer.svg" alt="Category preview" />
+              <div class="preview-info">
+                <h4 id="categoryPreviewName">Church Flyer</h4>
+                <p id="categoryPreviewDesc">Professional flyer design for church events and announcements.</p>
+                <div class="quick-stats">
+                  <div><span>Delivery:</span> <strong id="categoryDeliveryTime">1-3 days</strong></div>
+                  <div><span>Starting:</span> <strong id="categoryStartingPrice">₦5,000</strong></div>
+                </div>
+              </div>
+              <div class="mobile-mockup">
+                <img id="categoryPreviewMobile" src="images/service-app.svg" alt="App preview mockup" />
+              </div>
+            </div>
+            <div class="category-selection-panel">
+              <h4>Pick a category</h4>
+              <p class="muted">Choose the project type you need — each option shows estimated timeline and starting price.</p>
+              <button type="button" class="primary-btn" id="openCategorySelector" style="margin-top:12px;">Browse All Categories</button>
+            </div>
+            <div id="categoryGrid" class="category-grid hide"></div>
+            <div class="step-actions">
+              <button type="button" class="secondary-btn" data-close-modal>Cancel</button>
+              <button type="button" class="primary-btn" id="previewNextBtn" data-next-step disabled>Next: Customize</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: Customization -->
+        <div class="wizard-step hide" data-step="2">
+          <h3>Customize Your Project</h3>
+          <div class="step-content">
+            <div class="form-grid design-customization">
+              <label>
+                Delivery format
+                <select id="deliveryFormat">
+                  <option>PNG</option>
+                  <option>PDF</option>
+                  <option>JPG</option>
+                </select>
+              </label>
+              <label>
+                Design complexity
+                <select id="designComplexity">
+                  <option value="Basic">Basic (₦5,000)</option>
+                  <option value="Standard">Standard (₦12,000)</option>
+                  <option value="Premium">Premium (₦20,000)</option>
+                </select>
+              </label>
+              <label>
+                Printing size
+                <select id="printSize">
+                  <option value="None">Digital only</option>
+                  <option value="A4 paper">A4 paper (+₦500 per qty)</option>
+                  <option value="4x4 inches">4x4 inches (+₦1,200 per qty)</option>
+                  <option value="A3 paper">A3 paper (+₦800 per qty)</option>
+                </select>
+              </label>
+              <label>
+                Quantity
+                <input id="quantity" type="number" min="1" value="1" />
+              </label>
+              <label>
+                Delivery option
+                <select id="deliveryOption">
+                  <option value="Digital">Digital only</option>
+                  <option value="PrintDelivery">Print + Delivery (+₦1,500)</option>
+                  <option value="PrintPickup">Print Pickup (+₦500)</option>
+                </select>
+              </label>
+            </div>
+            <div class="form-grid web-customization hide">
+              <label>
+                Project scope
+                <select id="webScope">
+                  <option value="Website">Website build</option>
+                  <option value="Web App">Custom web app</option>
+                  <option value="SaaS Platform">SaaS platform</option>
+                </select>
+              </label>
+              <label>
+                Estimated pages
+                <select id="webPages">
+                  <option value="5">5 pages</option>
+                  <option value="10">10 pages</option>
+                  <option value="15">15 pages</option>
+                  <option value="Custom">Custom scope</option>
+                </select>
+              </label>
+              <label>
+                Timeline
+                <select id="webTimeline">
+                  <option value="2-3 weeks">2-3 weeks</option>
+                  <option value="4-5 weeks">4-5 weeks</option>
+                  <option value="6-8 weeks">6-8 weeks</option>
+                </select>
+              </label>
+              <label class="full-width">
+                Feature highlights
+                <div class="feature-list" id="webFeatureList">
+                  <label><input type="checkbox" value="Responsive UI" checked /> Responsive UI</label>
+                  <label><input type="checkbox" value="SEO Setup" checked /> SEO setup</label>
+                  <label><input type="checkbox" value="Admin dashboard" /> Admin dashboard</label>
+                  <label><input type="checkbox" value="CMS editing" checked /> CMS editing</label>
+                </div>
+              </label>
+            </div>
+            <div class="form-grid app-customization hide">
+              <label>
+                Target platform
+                <select id="appPlatform">
+                  <option value="iOS">iOS</option>
+                  <option value="Android">Android</option>
+                  <option value="iOS + Android">iOS + Android</option>
+                  <option value="Cross-platform">Cross-platform</option>
+                </select>
+              </label>
+              <label>
+                Screen count
+                <select id="appScreens">
+                  <option value="5">5 screens</option>
+                  <option value="10">10 screens</option>
+                  <option value="15">15 screens</option>
+                  <option value="Custom">Custom app size</option>
+                </select>
+              </label>
+              <label>
+                Development intensity
+                <select id="appComplexity">
+                  <option value="Launch">Launch MVP</option>
+                  <option value="Growth">Growth-ready app</option>
+                  <option value="Enterprise">Enterprise-grade</option>
+                </select>
+              </label>
+              <label class="full-width">
+                Feature highlights
+                <div class="feature-list" id="appFeatureList">
+                  <label><input type="checkbox" value="Push notifications" checked /> Push notifications</label>
+                  <label><input type="checkbox" value="Offline access" /> Offline access</label>
+                  <label><input type="checkbox" value="User authentication" checked /> User authentication</label>
+                  <label><input type="checkbox" value="Analytics dashboard" /> Analytics dashboard</label>
+                </div>
+              </label>
+            </div>
+            <div class="step-actions">
+              <button type="button" class="secondary-btn" onclick="window.prevWizardStep()">Back</button>
+              <button type="button" class="primary-btn" onclick="window.nextWizardStep()">Next: Contact</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: Contact & Upload -->
+        <div class="wizard-step hide" data-step="3">
+          <h3>Contact & Project Details</h3>
+          <div class="step-content">
+            <div class="form-grid web-contact hide">
+              <label>
+                Business name
+                <input id="webBusinessName" type="text" placeholder="Your business or project name" />
+              </label>
+              <label>
+                Domain name (if existing)
+                <input id="webDomain" type="text" placeholder="example.com" />
+              </label>
+              <label>
+                Email address
+                <input id="webEmail" type="email" placeholder="you@domain.com" />
+              </label>
+              <label class="full-width">
+                Upload reference files or designs
+                <input id="webReferenceUpload" type="file" accept="image/*,.pdf" multiple />
+              </label>
+              <label class="full-width">
+                Project description & requirements
+                <textarea id="webDescriptionInstructions" rows="3" placeholder="Tell us about your project, goals, and any specific requirements..."></textarea>
+              </label>
+            </div>
+
+            <div class="form-grid app-contact hide">
+              <label>
+                Business name
+                <input id="appBusinessName" type="text" placeholder="Your company or app name" />
+              </label>
+              <label>
+                Email address
+                <input id="appEmail" type="email" placeholder="you@domain.com" />
+              </label>
+              <label>
+                Target market or user base
+                <input id="appTargetMarket" type="text" placeholder="E.g. Nigerian SMEs, students, etc." />
+              </label>
+              <label class="full-width">
+                Upload wireframes or design files
+                <input id="appReferenceUpload" type="file" accept="image/*,.pdf" multiple />
+              </label>
+              <label class="full-width">
+                App concept & features description
+                <textarea id="appDescriptionInstructions" rows="3" placeholder="Describe your app idea, key features, and user flow..."></textarea>
+              </label>
+            </div>
+
+            <div class="form-grid design-contact hide">
+              <label>
+                Phone number
+                <input id="phoneNumber" type="tel" placeholder="+234 800 000 0000" />
+              </label>
+              <label>
+                WhatsApp number
+                <input id="whatsappNumber" type="tel" placeholder="+234 800 000 0000" />
+              </label>
+              <label>
+                Email address
+                <input id="emailAddress" type="email" placeholder="you@domain.com" />
+              </label>
+              <label class="full-width" id="deliveryAddressField">
+                Delivery address (if printing + delivery)
+                <textarea id="deliveryAddress" rows="2" placeholder="Street, city, state, delivery instructions"></textarea>
+              </label>
+              <label class="full-width">
+                Upload reference files
+                <input id="referenceUpload" type="file" accept="image/*,.pdf" multiple />
+              </label>
+              <label class="full-width">
+                Design instructions
+                <textarea id="designInstructions" rows="3" placeholder="Tell us what you want in your design..."></textarea>
+              </label>
+            </div>
+
+            <div class="step-actions">
+              <button type="button" class="secondary-btn" onclick="window.prevWizardStep()">Back</button>
+              <button type="button" class="primary-btn" onclick="window.nextWizardStep()">Next: Review</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4: Review & Confirm -->
+        <div class="wizard-step hide" data-step="4">
+          <h3>Review Your Order</h3>
+          <div class="step-content">
+            <div class="order-summary card">
+              <div class="summary-grid">
+                <div class="summary-item">
+                  <span>Category</span>
+                  <strong id="reviewCategory">Church Flyer</strong>
+                </div>
+                <div class="summary-item">
+                  <span>Complexity</span>
+                  <strong id="reviewComplexity">Basic</strong>
+                </div>
+                <div id="reviewFormatItem" class="summary-item">
+                  <span>Format</span>
+                  <strong id="reviewFormat">PNG</strong>
+                </div>
+                <div class="summary-item">
+                  <span>Quantity</span>
+                  <strong id="reviewQuantity">1</strong>
+                </div>
+                <div class="summary-item design-only">
+                  <span>Printing</span>
+                  <strong id="reviewPrinting">Digital only</strong>
+                </div>
+                <div class="summary-item">
+                  <span>Delivery</span>
+                  <strong id="reviewDelivery">Digital</strong>
+                </div>
+                <div class="summary-item web-only hide">
+                  <span>Timeline</span>
+                  <strong id="reviewTimeline">3-4 weeks</strong>
+                </div>
+                <div class="summary-item app-only hide">
+                  <span>Platform</span>
+                  <strong id="reviewPlatform">iOS + Android</strong>
+                </div>
+                <div class="summary-item app-only hide">
+                  <span>Screens</span>
+                  <strong id="reviewScreens">10</strong>
+                </div>
+                <div class="summary-item app-only hide">
+                  <span>Features</span>
+                  <strong id="reviewFeatures">Push notifications</strong>
+                </div>
+                <div class="summary-item web-only hide">
+                  <span>Highlights</span>
+                  <strong id="reviewHighlights">Responsive UI, CMS</strong>
+                </div>
+              </div>
+              <div class="order-totals">
+                <div><span id="priceLabel">Design price</span> <strong id="designPrice">₦5,000</strong></div>
+                <div><span>Printing cost</span> <strong id="printingCost">₦0</strong></div>
+                <div><span>Quantity total</span> <strong id="quantityTotal">₦5,000</strong></div>
+                <div><span>Delivery fee</span> <strong id="deliveryFee">₦0</strong></div>
+              </div>
+              <div class="order-final">
+                <span>Final total</span>
+                <strong id="finalTotal">₦5,000</strong>
+              </div>
+            </div>
+            <div class="step-actions">
+              <button type="button" class="secondary-btn" onclick="window.prevWizardStep()">Back</button>
+              <button type="button" class="primary-btn" id="confirmOrderBtn">Place Order</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="payment-footer">
+        <div class="payment-summary">
+          <span>Selected Plan</span>
+          <strong id="selectedPlanName">Starter</strong>
+        </div>
+        <div class="payment-total">
+          <span>Total</span>
+          <strong id="selectedPlanPrice">₦750,000</strong>
+        </div>
+        <button class="primary-btn" id="payNowBtn" disabled>Pay with Paystack</button>
+      </div>
+      <div class="payment-status" id="paymentStatus">Payment status will appear here.</div>
+    </div>
+  </div>
+  
+  <!-- Category Selection Modal -->
+  <div class="modal fullscreen" id="categorySelectionModal">
+    <div class="modal-content fullscreen">
+      <div class="modal-header">
+        <div>
+          <span class="modal-tag">Choose Project Type</span>
+          <h2>Select Your Project Category</h2>
+          <p class="modal-description">Click a category below to select it. Can't find what you need? Contact us for a custom proposal.</p>
+        </div>
+        <button class="modal-close" data-close-modal>&times;</button>
+      </div>
+      <div id="categorySelectionGrid" class="category-selection-grid"></div>
+    </div>
+  </div>
+
+  <!-- Premium contact popup for 'Others' requests -->
+  <div class="modal" id="otherContactModal">
+    <div class="modal-content">
+      <span class="close" data-close-modal>&times;</span>
+      <h2>Request a Custom Design</h2>
+      <p class="modal-description">Tell us about your custom request and we'll get back with a proposal.</p>
+      <div class="form-grid">
+        <label>Name<input id="otherName" type="text" placeholder="Full name"/></label>
+        <label>WhatsApp<input id="otherWhatsApp" type="tel" placeholder="+234 800 000 0000"/></label>
+        <label>Email<input id="otherEmail" type="email" placeholder="you@domain.com"/></label>
+        <label>Budget range<select id="otherBudget"><option>₦2,000 - ₦10,000</option><option>₦10,000 - ₦50,000</option><option>₦50,000+</option></select></label>
+        <label>Deadline<input id="otherDeadline" type="date"/></label>
+        <label>Files<input id="otherFiles" type="file" multiple/></label>
+        <label class="full-width">Request details<textarea id="otherDetails" rows="4" placeholder="Describe your custom request"></textarea></label>
+      </div>
+      <div style="margin-top:14px;display:flex;gap:12px;justify-content:flex-end;">
+        <button class="secondary-btn" data-close-modal>Cancel</button>
+        <button class="primary-btn" id="sendOtherRequest">Send Request</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PREMIUM CONTACT SECTION (Phase 2.5) -->
+  <section id="contact" class="premium-contact">
+    <div class="container contact-container">
+      <div class="contact-grid">
+        <div class="contact-info card glass-hover">
+          <div class="contact-brand">
+            <div class="logo">The Odun Design</div>
+            <p class="brand-desc">Premium digital experiences for modern brands, startups, and businesses across Africa.</p>
+          </div>
+
+          <div class="business-cards">
+            <div class="biz-card">
+              <h4>WhatsApp</h4>
+              <p class="biz-meta">Chat on WhatsApp — Replies within minutes</p>
+              <a class="contact-cta" href="https://wa.me/2348160191823" target="_blank" rel="noopener">Chat on WhatsApp</a>
+            </div>
+
+            <div class="biz-card">
+              <h4>Email</h4>
+              <p class="biz-meta">Professional project discussions</p>
+              <a class="contact-cta" href="mailto:theodundesign@gmail.com">theodundesign@gmail.com</a>
+            </div>
+
+            <div class="biz-card">
+              <h4>Consultation</h4>
+              <p class="biz-meta">Free first project consultation</p>
+            </div>
+
+            <div class="biz-card">
+              <h4>Availability</h4>
+              <p class="biz-meta">Mon - Sat • 8AM - 8PM</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form card glass-hover">
+          <form id="contactForm" class="premium-form">
+            <h3>Start Your Project</h3>
+            <p class="muted">Share a few details and we'll follow up on WhatsApp or Email.</p>
+
+            <div class="form-row">
+              <label class="float-label">Full Name
+                <input id="contactName" name="name" type="text" required />
+              </label>
+              <label class="float-label">Email Address
+                <input id="contactEmail" name="email" type="email" required />
+              </label>
+            </div>
+
+            <div class="form-row">
+              <label class="float-label">WhatsApp Number
+                <input id="contactWhatsapp" name="whatsapp" type="tel" placeholder="+234 816 019 1823" />
+              </label>
+              <label class="float-label">Company / Brand
+                <input id="contactCompany" name="company" type="text" />
+              </label>
+            </div>
+
+            <div class="form-row">
+              <label class="float-label select">Service Needed
+                <select id="contactService" name="service">
+                  <option>Web Development</option>
+                  <option>App Development</option>
+                  <option>Graphic Design</option>
+                  <option>Branding</option>
+                  <option>UI/UX Design</option>
+                  <option>Training</option>
+                  <option>Custom Request</option>
+                </select>
+              </label>
+
+              <label class="float-label select">Budget Range
+                <select id="contactBudget" name="budget">
+                  <option>₦5,000 - ₦50,000</option>
+                  <option>₦50,000 - ₦200,000</option>
+                  <option>₦200,000 - ₦1M</option>
+                  <option>₦1M+</option>
+                </select>
+              </label>
+            </div>
+
+            <label class="float-label full-width">Timeline
+              <input id="contactTimeline" name="timeline" type="text" placeholder="e.g. 4-8 weeks" />
+            </label>
+
+            <label class="float-label full-width">Project Description
+              <textarea id="contactDescription" name="description" rows="4" placeholder="Tell us about your project"></textarea>
+            </label>
+
+            <div id="fileDropZone" class="file-drop">Drop files here or click to upload<input id="contactFiles" type="file" multiple accept="image/*,.pdf,.doc,.docx" hidden></div>
+            <div id="fileList" class="file-list"></div>
+
+            <div class="form-actions">
+              <button type="submit" class="primary-btn" id="contactSubmit">Send Request</button>
+            </div>
+          </form>
+
+          <div id="contactSuccess" class="contact-success hide">
+            <div class="success-card">
+              <div class="success-icon">✓</div>
+              <h4>Project request received successfully.</h4>
+              <p>We'll contact you shortly via WhatsApp or Email.</p>
+              <button class="secondary-btn" id="contactSuccessClose">Done</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating WhatsApp widget -->
+  <a id="whatsappFab" class="whatsapp-fab" href="https://wa.me/2348160191823" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <span class="online-dot"></span>
+    <i class="fa-brands fa-whatsapp"></i>
+    <span class="whatsapp-tooltip">Chat on WhatsApp</span>
+  </a>
+
+  <!-- PREMIUM FOOTER -->
+  <footer class="footer premium-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="logo">The Odun Design</div>
+        <p>Premium digital experiences for modern brands, startups, and businesses across Africa.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#training">Training</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <a href="https://wa.me/2348160191823" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:theodundesign@gmail.com">theodundesign@gmail.com</a>
+      </div>
+      <div class="footer-social">
+        <h4>Follow</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© <span id="year">2026</span> The Odun Design. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      // force fresh stylesheet and script load by appending timestamp
+      var mainCSS = document.getElementById('mainStylesheet');
+      if(mainCSS) mainCSS.href = mainCSS.href + '?t=' + Date.now();
+      var s = document.createElement('script');
+      s.src = 'script.js?t=' + Date.now();
+      s.async = false;
+      document.body.appendChild(s);
+    })();
+  </script>
+
+</body>
+</html>

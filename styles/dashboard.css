@@ -1,0 +1,134 @@
+/* Dashboard tokens and layout */
+.dash-root{display:flex;min-height:100vh;background:var(--bg)}
+.dash-sidebar{
+  width:220px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  backdrop-filter:blur(6px);
+  padding:20px;
+  color:#cfe9ff;
+  border-right:1px solid var(--glass-border);
+  overflow-y:auto;
+  transition:width 0.28s ease
+}
+.dash-sidebar .brand{font-weight:700;font-size:20px;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.dash-sidebar nav ul{list-style:none;padding:0;margin:0}
+.dash-sidebar nav li{margin:10px 0}
+.dash-sidebar nav a{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:10px 12px;
+  border-radius:8px;
+  color:rgba(255,255,255,0.7);
+  text-decoration:none;
+  transition:all 0.2s ease;
+  font-size:0.95rem
+}
+.dash-sidebar nav a:hover{
+  background:rgba(110,231,247,0.1);
+  color:#6EE7F7
+}
+.dash-main{flex:1;display:flex;flex-direction:column}
+.dash-topbar{
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 24px;
+  border-bottom:1px solid var(--glass-border);
+  background:linear-gradient(90deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+  backdrop-filter:blur(4px)
+}
+.dash-topbar h1{font-size:1.4rem;font-weight:700;margin:0}
+.dash-content{
+  padding:32px 24px;
+  flex:1;
+  overflow-y:auto
+}
+
+/* Stat cards */
+.stat-card{
+  background:var(--card);
+  border:1px solid var(--glass-border);
+  padding:20px;
+  border-radius:12px;
+  color:#e6eef8;
+  min-width:180px;
+  transition:all var(--transition-medium)
+}
+.stat-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 40px rgba(2,6,23,0.4);
+  border-color:#6EE7F7
+}
+.stat-card-label{font-size:0.9rem;color:rgba(255,255,255,0.65);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px;font-weight:600}
+.stat-card-value{font-size:2rem;font-weight:900;background:linear-gradient(135deg, #6EE7F7, #6D28D9);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.stat-card-delta{font-size:0.85rem;color:#6EE7F7}
+
+/* Dashboard table */
+.dash-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--glass-border);border-radius:12px;overflow:hidden}
+.dash-table thead{background:rgba(255,255,255,0.02);border-bottom:1px solid var(--glass-border)}
+.dash-table th{padding:16px;text-align:left;font-weight:700;font-size:0.9rem;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.5px}
+.dash-table td{padding:16px;border-bottom:1px solid var(--glass-border);color:#e6eef8;font-size:0.95rem}
+.dash-table tbody tr:hover{background:rgba(110,231,247,0.05)}
+.dash-table tbody tr:last-child td{border-bottom:none}
+
+/* Dashboard form */
+.dash-form-group{margin-bottom:20px}
+.dash-form-label{display:block;margin-bottom:8px;font-weight:600;color:rgba(255,255,255,0.85);font-size:0.95rem}
+.dash-form-input,.dash-form-select,.dash-form-textarea{
+  width:100%;
+  background:rgba(255,255,255,0.04);
+  border:1px solid var(--glass-border);
+  padding:12px;
+  border-radius:8px;
+  color:#e6eef8;
+  font-size:0.95rem;
+  font-family:inherit;
+  transition:all 0.2s ease
+}
+.dash-form-input:focus,.dash-form-select:focus,.dash-form-textarea:focus{
+  background:rgba(255,255,255,0.06);
+  border-color:#6EE7F7;
+  outline:none;
+  box-shadow:0 0 0 3px rgba(110,231,247,0.1)
+}
+
+/* Button variants */
+.btn-ghost{
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.06);
+  padding:10px 14px;
+  border-radius:8px;
+  color:inherit;
+  cursor:pointer;
+  font-weight:600;
+  transition:all 0.2s ease
+}
+.btn-ghost:hover{
+  background:rgba(110,231,247,0.1);
+  border-color:#6EE7F7;
+  color:#6EE7F7
+}
+.btn-danger{
+  background:rgba(239,68,68,0.15);
+  border:1px solid rgba(239,68,68,0.3);
+  color:#ef4444;
+  padding:10px 14px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+  transition:all 0.2s ease
+}
+.btn-danger:hover{
+  background:rgba(239,68,68,0.25);
+  border-color:#ef4444
+}
+
+/* Responsive dashboard */
+@media (max-width:768px){
+  .dash-sidebar{width:70px}
+  .dash-sidebar .brand span{display:none}
+  .dash-content{padding:20px 16px}
+  .stat-card{min-width:auto;flex:1}
+}

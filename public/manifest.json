@@ -1,0 +1,11 @@
+{
+  "name": "Odun Design Platform",
+  "short_name": "Odun",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#05060a",
+  "theme_color": "#0b0b10",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

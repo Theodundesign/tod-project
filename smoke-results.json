@@ -1,0 +1,25 @@
+{
+  "url": "http://127.0.0.1:8000/",
+  "results": [
+    {
+      "name": "Open Category Selector",
+      "ok": false,
+      "reason": "missing-selector"
+    },
+    {
+      "name": "Open Training Preview",
+      "ok": true,
+      "screenshot": "smoke-Open_Training_Preview.png"
+    },
+    {
+      "name": "Open Contact CTA",
+      "ok": true,
+      "screenshot": "smoke-Open_Contact_CTA.png"
+    },
+    {
+      "name": "Click WhatsApp FAB",
+      "ok": true,
+      "screenshot": "smoke-Click_WhatsApp_FAB.png"
+    }
+  ]
+}
