@@ -24,11 +24,20 @@ export default function Contact(){
         setForm({name:'', email:'', message:'', subject: ''})
         setTimeout(() => setSent(false), 5000)
       } else {
-        setError('Failed to send message. Please try again.')
+        // Handle specific status codes with better error messages
+        if (res.status === 429) {
+          setError('Too many requests. Please wait a moment and try again.')
+        } else if (res.status === 400) {
+          setError('Please fill in all required fields: name, email, and message.')
+        } else if (res.status === 500) {
+          setError('We encountered a server error. Your message may not have been sent. Please try again shortly.')
+        } else {
+          setError('Failed to send message. Please check your connection and try again.')
+        }
       }
     } catch(e) {
       console.error(e)
-      setError('An error occurred. Please try again later.')
+      setError('Unable to send your message. Please check your internet connection and try again.')
     } finally {
       setLoading(false)
     }

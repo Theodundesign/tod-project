@@ -12,13 +12,13 @@ export default async function handler(req, res){
   if(!rl.ok){
     try{ logRateLimitViolation(ip, { route: '/api/contact/send', rl }) }catch(e){ console.debug('logRateLimitViolation error', e) }
     try{ await trackSuspiciousActivity(ip, { route: '/api/contact/send', reason: 'rate_limit' }) }catch(e){ console.debug('trackSuspiciousActivity error', e) }
-    return res.status(429).setHeader('Retry-After', String(rl.retryAfter || 60)).json({ success:false, error: 'Too many requests' })
+    return res.status(429).setHeader('Retry-After', String(rl.retryAfter || 60)).json({ success:false, error: 'Too many requests. Please try again later.' })
   }
 
   const { name, email, message, honeypot } = req.body || {}
   // simple spam/honeypot protection
-  if(honeypot) return res.status(400).json({ error: 'Spam detected' })
-  if(!name || !email || !message) return res.status(400).json({error:'name,email,message required'})
+  if(honeypot) return res.status(400).json({ error: 'Invalid submission detected.' })
+  if(!name || !email || !message) return res.status(400).json({error:'Please provide your name, email, and message to proceed.'})
 
   try{
     const doc = await adminDb.collection('messages').add({ name, email, message, createdAt: new Date(), status:'new', ip })
@@ -27,6 +27,6 @@ export default async function handler(req, res){
     return res.json({ok:true})
   }catch(e){
     log('contact error', e.message)
-    return res.status(500).json({error:e.message})
+    return res.status(500).json({error:'We encountered an error sending your message. Please try again or contact us directly.'})
   }
 }

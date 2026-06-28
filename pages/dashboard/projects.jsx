@@ -7,10 +7,13 @@ export default function Projects(){
   const { user } = useAuth()
   const [projects, setProjects] = useState([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
 
   useEffect(() => {
     if (!user) return
     let unsub = null
+    setLoading(true)
+    setError('')
     ;(async () => {
       try {
         const fb = await import('../../firebase/firebaseClient')
@@ -19,17 +22,25 @@ export default function Projects(){
         unsub = onSnapshot(projectsQuery, (snapshot) => {
           setProjects(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })))
           setLoading(false)
+          setError('')
         }, (error) => {
           console.error(error)
+          setError('Failed to load projects. Please refresh the page or try again in a moment.')
           setLoading(false)
         })
       } catch (err) {
         console.error(err)
+        setError('Unable to load your projects. Please check your connection and try again.')
         setLoading(false)
       }
     })()
     return () => { if (unsub) unsub() }
   }, [user])
+
+  const handleRetry = () => {
+    setError('')
+    window.location.reload()
+  }
 
   const activeProjects = useMemo(() => {
     if (!projects.length) return []
@@ -44,9 +55,28 @@ export default function Projects(){
           <p>Manage project progress, deadlines, and project assets from one dashboard.</p>
         </div>
 
+        {/* Error State */}
+        {error && (
+          <div className="card" style={{ padding: '20px', background: 'rgba(248, 113, 113, 0.1)', borderLeft: '4px solid #f87171', marginBottom: '24px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+              <div>
+                <p style={{ margin: '0 0 6px 0', color: '#f87171', fontWeight: 600 }}>Error loading projects</p>
+                <p style={{ margin: 0, color: 'rgba(255,255,255,0.75)', fontSize: '0.9rem' }}>{error}</p>
+              </div>
+              <button
+                onClick={handleRetry}
+                className="btn btn-secondary"
+                style={{ whiteSpace: 'nowrap' }}
+              >
+                Retry
+              </button>
+            </div>
+          </div>
+        )}
+
         {loading ? (
           <div className="empty-state">Loading projects…</div>
-        ) : activeProjects.length ? (
+        ) : !error && activeProjects.length ? (
           <div style={{ display: 'grid', gap: '20px' }}>
             {activeProjects.map((project) => (
               <div key={project.id} className="service-card" style={{ padding: '24px' }}>
@@ -70,7 +100,7 @@ export default function Projects(){
               </div>
             ))}
           </div>
-        ) : (
+        ) : !error && (
           <div className="empty-state">No active projects found. Project status and timelines will appear here once a project starts.</div>
         )}
       </DashboardLayout>

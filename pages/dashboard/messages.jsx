@@ -8,10 +8,13 @@ export default function Messages(){
   const { user } = useAuth()
   const [conversations, setConversations] = useState([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
 
   useEffect(() => {
     if (!user) return
     let unsub = null
+    setLoading(true)
+    setError('')
     ;(async () => {
       try {
         const fb = await import('../../firebase/firebaseClient')
@@ -24,18 +27,26 @@ export default function Messages(){
         unsub = onSnapshot(convQuery, (snapshot) => {
           setConversations(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })))
           setLoading(false)
+          setError('')
         }, (error) => {
           console.error(error)
+          setError('Failed to load messages. Please refresh the page or try again in a moment.')
           setLoading(false)
         })
       } catch (err) {
         console.error(err)
+        setError('Unable to load your conversations. Please check your connection and try again.')
         setLoading(false)
       }
     })()
 
     return () => { if (unsub) unsub() }
   }, [user])
+
+  const handleRetry = () => {
+    setError('')
+    window.location.reload()
+  }
 
   return (
     <ProtectedRoute>
@@ -45,9 +56,28 @@ export default function Messages(){
           <p>View active conversations and respond to clients in real time.</p>
         </div>
 
+        {/* Error State */}
+        {error && (
+          <div className="card" style={{ padding: '20px', background: 'rgba(248, 113, 113, 0.1)', borderLeft: '4px solid #f87171', marginBottom: '24px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+              <div>
+                <p style={{ margin: '0 0 6px 0', color: '#f87171', fontWeight: 600 }}>Error loading messages</p>
+                <p style={{ margin: 0, color: 'rgba(255,255,255,0.75)', fontSize: '0.9rem' }}>{error}</p>
+              </div>
+              <button
+                onClick={handleRetry}
+                className="btn btn-secondary"
+                style={{ whiteSpace: 'nowrap' }}
+              >
+                Retry
+              </button>
+            </div>
+          </div>
+        )}
+
         {loading ? (
           <div className="empty-state">Loading conversations…</div>
-        ) : (
+        ) : !error && (
           <div style={{ display: 'grid', gap: '20px' }}>
             {conversations.length ? conversations.map((conversation) => (
               <Link legacyBehavior key={conversation.id} href={`/dashboard/messages/${conversation.id}`}>

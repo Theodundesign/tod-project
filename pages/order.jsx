@@ -153,7 +153,7 @@ export default function OrderPage(){
       })
 
       const createOrderData = await createOrderRes.json()
-      if(!createOrderRes.ok) throw new Error(createOrderData.error || 'Failed to create order')
+      if(!createOrderRes.ok) throw new Error(createOrderData.error || 'Failed to create order. Please try again.')
 
       // Then initialize payment with order ID
       const response = await fetch('/api/payments/initialize', {
@@ -175,11 +175,17 @@ export default function OrderPage(){
       })
 
       const payload = await response.json()
-      if(!response.ok) throw new Error(payload.error || 'Unable to initialize payment.')
+      if(!response.ok) {
+        // Provide better error message based on response status
+        if (response.status === 503) {
+          throw new Error('Payment system is temporarily unavailable. Please try again in a moment.')
+        }
+        throw new Error(payload.error || 'Unable to initialize payment. Please try again.')
+      }
       window.location.href = payload.authorization_url
     }catch(e){
       console.error(e)
-      setError(e.message || 'Payment initialization failed.')
+      setError(e.message || 'An error occurred while processing your order. Please try again or contact support if the problem persists.')
     }finally{
       setLoading(false)
     }
