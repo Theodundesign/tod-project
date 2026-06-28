@@ -9,7 +9,8 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#0b0b10" />
           <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
           <link rel="manifest" href="/manifest.json" />
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+          <link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
           <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
           <link rel="shortcut icon" href="/favicon.ico" />
           <meta name="description" content="The Odun Design — Premium digital agency for web, app, branding, SEO and training." />
