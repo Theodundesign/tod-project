@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const puppeteer = require('puppeteer')
-const fetch = globalThis.fetch || ((...args) => import('node-fetch').then(m => m.default(...args)))
+// eslint-disable-next-line no-undef
+const fetch = typeof globalThis !== 'undefined' && globalThis.fetch ? globalThis.fetch : ((...args) => import('node-fetch').then(m => m.default(...args)))
 
 const base = process.env.BASE_URL || 'http://localhost:3000'
 const waitForServer = async () => {
@@ -8,7 +9,9 @@ const waitForServer = async () => {
     try{
       const res = await fetch(base)
       if(res.status===200) return true
-    }catch(e){}
+    }catch(e){
+      // Continue waiting
+    }
     await new Promise(r=>setTimeout(r,1000))
   }
   throw new Error('Server did not start within timeout')
@@ -31,7 +34,7 @@ const testUser = {
   const page = await browser.newPage()
   page.setDefaultNavigationTimeout(120000)
   page.setDefaultTimeout(120000)
-  page.on('console', msg => { try{ console.log('PAGE CONSOLE:', msg.type(), msg.text()) }catch(e){} })
+  page.on('console', msg => { try{ console.log('PAGE CONSOLE:', msg.type(), msg.text()) }catch(e){ /* ignore */ } })
   page.on('pageerror', err => { console.error('PAGE ERROR:', err) })
   page.on('response', resp => {
     try{
@@ -40,7 +43,9 @@ const testUser = {
       if(url.includes('/v1/projects') || url.includes('/identitytoolkit')){
         console.log('NET:', status, url)
       }
-    }catch(e){}
+    }catch(e){
+      // Ignore response logging errors
+    }
   })
 
   try{
@@ -83,11 +88,12 @@ const testUser = {
     await page.waitForSelector('h3')
     // wait up to 30s for profile fullName to appear in the greeting
     try{
-      await page.waitForFunction((first)=>{
+      await page.waitForFunction(() => {
         const el = document.querySelector('h3')
         return el && el.innerText && el.innerText.includes(',')
-      }, { timeout: 30000 }, testUser.fullName.split(' ')[0])
+      }, { timeout: 30000 })
     }catch(e){
+      // Profile greeting may not show immediately
       console.warn('Timeout waiting for dashboard greeting with full name — continuing anyway')
     }
     const h3Text = await page.$eval('h3', el => el.innerText)
@@ -163,7 +169,7 @@ const testUser = {
     process.exit(0)
   }catch(err){
     console.error('Test encountered error:', err)
-    try{ await browser.close() }catch(e){}
+    try{ await browser.close() }catch(e){ /* ignore */ }
     const fs = require('fs')
     fs.writeFileSync('LIVE-FIREBASE-TEST-REPORT.md', `# LIVE Firebase Test Report\n\nStatus: FAILURE\n\nError: ${err.message}\n\nSee console for details.\n`)
     process.exit(3)

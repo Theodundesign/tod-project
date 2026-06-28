@@ -42,6 +42,7 @@ const FAQ = [
 export default function Home(){
   const [openFaqIndex, setOpenFaqIndex] = useState(null)
 
+  // eslint-disable-next-line no-unused-vars
   const toggleFaq = (index) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index)
   }

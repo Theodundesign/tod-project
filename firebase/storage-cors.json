@@ -1,0 +1,8 @@
+[
+  {
+    "origin": ["http://localhost:3000", "http://localhost:3006", "https://theodundesign.com", "https://*.theodundesign.com"],
+    "method": ["GET", "HEAD", "PUT", "POST", "DELETE"],
+    "responseHeader": ["Content-Type", "x-goog-meta-*", "Cache-Control"],
+    "maxAgeSeconds": 3600
+  }
+]
