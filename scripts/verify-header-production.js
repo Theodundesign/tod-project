@@ -48,6 +48,7 @@ const fs = require('fs');
     const dom = await page.evaluate(() => {
       const header = document.querySelector('header.header') || document.querySelector('header');
       const btns = Array.from(document.querySelectorAll('.icon-button, .menu-toggle, a.btn-secondary, a.btn-primary'));
+      const authCard = document.querySelector('.auth-card');
       const headerRect = header ? header.getBoundingClientRect() : null;
       const viewportWidth = window.innerWidth;
       const body = document.body; const html = document.documentElement;
@@ -68,7 +69,10 @@ const fs = require('fs');
       // clipped text detection: elements whose scrollWidth > clientWidth
       const clipped = Array.from(document.querySelectorAll('header *')).filter(el => el.scrollWidth > el.clientWidth + 2).map(el => ({tag: el.tagName, cls: el.className, scrollWidth: el.scrollWidth, clientWidth: el.clientWidth}));
       const buttons = btns.map(b=>{const r=b.getBoundingClientRect(); return {text: b.innerText, w: Math.round(r.width), h: Math.round(r.height), x: Math.round(r.left), r: Math.round(r.right)} });
-      return {noHorizontalScroll, overlaps, clipped, headerRect, buttons, viewportWidth};
+      const authCardRect = authCard ? authCard.getBoundingClientRect() : null;
+      const authCardFitsViewport = authCardRect ? authCardRect.left >= 0 && authCardRect.right <= viewportWidth + 1 && authCardRect.width <= viewportWidth - 24 : true;
+      const authButtons = authCard ? Array.from(authCard.querySelectorAll('.btn-primary, .btn-ghost')).map(b=>{const r=b.getBoundingClientRect(); return {text: b.innerText, w: Math.round(r.width), h: Math.round(r.height), x: Math.round(r.left), r: Math.round(r.right)} }) : [];
+      return {noHorizontalScroll, overlaps, clipped, headerRect, buttons, viewportWidth, authCardFitsViewport, authCardRect, authButtons};
     });
 
     // retrieve layout-shift entries captured
