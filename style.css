@@ -3042,7 +3042,7 @@ button:focus, input:focus, textarea:focus{outline:2px solid rgba(110,231,247,0.1
 .step-pill{padding:16px;border-radius:18px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);text-align:center;color:var(--muted)}
 .step-pill.active{background:rgba(255,255,255,.08);border-color:rgba(110,231,247,.32);color:#fff}
 .package-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:20px}
-.package-card{padding:22px;border-radius:22px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:12px;transition:transform .25s ease,box-shadow .25s ease}
+.package-card{padding:22px;border-radius:22px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:12px;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
 .package-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.18)}
 .order-actions{display:flex;gap:14px;justify-content:flex-end;margin-top:24px}
 .review-card{padding:24px;border-radius:24px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);margin-top:16px}
