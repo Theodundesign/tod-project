@@ -52,8 +52,8 @@ const fs = require('fs');
       const body = document.body; const html = document.documentElement;
       const scrollWidth = Math.max(body.scrollWidth, html.scrollWidth);
       const noHorizontalScroll = scrollWidth <= viewportWidth + 1;
-      // overlapping check among header children
-      const headerChildren = header ? Array.from(header.querySelectorAll('*')) : [];
+      // overlapping check among direct header children only (reduce false positives)
+      const headerChildren = header ? Array.from(header.children) : [];
       const overlaps = [];
       const rects = headerChildren.map((el, i) => ({i, w: el.getBoundingClientRect().width, h: el.getBoundingClientRect().height, l: el.getBoundingClientRect().left, r: el.getBoundingClientRect().right, t: el.getBoundingClientRect().top, b: el.getBoundingClientRect().bottom, tag: el.tagName, cls: el.className}));
       for (let i=0;i<rects.length;i++){
