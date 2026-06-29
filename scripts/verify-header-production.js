@@ -74,12 +74,23 @@ const fs = require('fs');
     // retrieve layout-shift entries captured
     const layoutShiftEntries = await page.evaluate(() => (window.__layoutShiftEntries || []).map(e=>({value: e.value, sources: e.sources ? e.sources.length : 0})) );
 
+    // accessibility: run axe on header if possible
+    let axeResult = null;
+    try {
+      await page.addScriptTag({url: 'https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.7.2/axe.min.js'});
+      axeResult = await page.evaluate(async () => {
+        try {
+          return await window.axe.run(document.querySelector('header') || document, {runOnly: {type: 'tag', values: ['wcag2aa']}});
+        } catch (e) { return {error: String(e)} }
+      });
+    } catch (e) { axeResult = {error: String(e)} }
+
     // collect errors/warnings and failed responses
     const consoleErrors = logs.filter(l => ['error','warning'].includes(l.type));
     const hydrationWarnings = logs.filter(l => l.text && /hydration|hydrate|Warning: Text content did not match|did not match/.test(l.text));
     const badResponses = responses.filter(r => r.status >= 400);
 
-    report.runs.push({viewport: vp.name, width: vp.width, status: resp ? resp.status() : null, dom, consoleErrors, hydrationWarnings, badResponses, failedRequests, layoutShiftEntries});
+    report.runs.push({viewport: vp.name, width: vp.width, status: resp ? resp.status() : null, dom, consoleErrors, hydrationWarnings, badResponses, failedRequests, layoutShiftEntries, axeResult});
 
     // clear listeners
     page.removeAllListeners('console'); page.removeAllListeners('request'); page.removeAllListeners('response'); page.removeAllListeners('requestfailed');
