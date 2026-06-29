@@ -1,3 +1,4 @@
+/* eslint-disable no-empty */
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 (async ()=>{
