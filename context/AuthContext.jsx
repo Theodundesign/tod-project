@@ -17,7 +17,6 @@ export function AuthProvider({ children }){
       const { doc, onSnapshot, setDoc, serverTimestamp } = await import('firebase/firestore')
 
       unsubscribeAuth = onAuthStateChanged(auth, (u) => {
-        console.log('Auth state changed, uid=', u?.uid)
         setUser(u)
         if (unsubscribeProfile) { unsubscribeProfile(); unsubscribeProfile = null }
 
@@ -193,7 +192,17 @@ export function AuthProvider({ children }){
   const resetPassword = async (email) => {
     const { auth } = await import('../firebase/firebaseClient')
     const { sendPasswordResetEmail } = await import('firebase/auth')
-    return sendPasswordResetEmail(auth, email)
+
+    const continueUrl = typeof window !== 'undefined'
+      ? `${window.location.origin}`
+      : process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+    const actionCodeSettings = {
+      url: `${continueUrl}/login`,
+      handleCodeInApp: false
+    }
+
+    console.debug('Password reset actionCodeSettings', actionCodeSettings)
+    return sendPasswordResetEmail(auth, email, actionCodeSettings)
   }
 
   const googleSignIn = async () => {

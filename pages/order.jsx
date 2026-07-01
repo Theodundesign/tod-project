@@ -170,7 +170,7 @@ export default function OrderPage(){
           description: form.description,
           files: form.files,
           reference,
-          callbackUrl: `${window.location.origin}/order`
+          callbackUrl: `${window.location.origin}/api/payments/callback`
         })
       })
 

@@ -90,14 +90,19 @@ export default function Payments(){
           <div className="empty-state">Loading payments…</div>
         ) : !error && filteredPayments.length ? (
           <div className="service-grid">
-            {filteredPayments.map((payment) => (
-              <div key={payment.id} className="service-card">
-                <h3>{payment.description || payment.reference || 'Payment record'}</h3>
-                <p>Status: {payment.status || 'Pending'}</p>
-                <p>Amount: {payment.amount ? `₦${Number(payment.amount).toLocaleString()}` : 'TBD'}</p>
-                <p style={{ marginTop: '12px', color: 'rgba(255,255,255,0.65)' }}>{payment.createdAt?.toDate ? payment.createdAt.toDate().toLocaleDateString() : 'Date unavailable'}</p>
-              </div>
-            ))}
+            {filteredPayments.map((payment) => {
+              const createdAt = payment.createdAt?.toDate ? payment.createdAt.toDate() : new Date(payment.createdAt || payment.transactionDate || Date.now())
+              return (
+                <div key={payment.id} className="service-card">
+                  <h3>{payment.description || payment.reference || `Payment ${payment.id}`}</h3>
+                  <p>Status: {payment.status || 'Pending'}</p>
+                  <p>Amount: {payment.amount ? `₦${Number(payment.amount).toLocaleString()}` : 'TBD'}</p>
+                  <p>Reference: {payment.reference || 'N/A'}</p>
+                  <p>Order ID: {payment.orderId || payment.orderReference || 'Unavailable'}</p>
+                  <p style={{ marginTop: '12px', color: 'rgba(255,255,255,0.65)' }}>{createdAt.toLocaleDateString()}</p>
+                </div>
+              )
+            })}
           </div>
         ) : !error && (
           <div className="empty-state">No payment records available yet.</div>

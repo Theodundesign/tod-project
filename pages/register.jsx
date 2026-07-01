@@ -19,8 +19,15 @@ export default function RegisterPage(){
     const redirect = router.query.redirect
     const raw = Array.isArray(redirect) ? redirect[0] : redirect
     if (typeof raw === 'string' && raw.trim()) {
-      try { return decodeURIComponent(raw) } catch {
-        return raw
+      try {
+        const decoded = decodeURIComponent(raw)
+        if (decoded.startsWith('/') && !/^\/(login|register|forgot|auth)/.test(decoded)) {
+          return decoded
+        }
+      } catch {
+        if (raw.startsWith('/') && !/^(\/(login|register|forgot|auth))/.test(raw)) {
+          return raw
+        }
       }
     }
     return '/dashboard'

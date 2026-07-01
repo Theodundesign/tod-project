@@ -2,7 +2,6 @@ import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/router'
-import Image from 'next/image'
 import { useAuth } from '../../context/AuthContext'
 import UserMenu from './UserMenu'
 import MobileMenu from './MobileMenu'
@@ -103,7 +102,8 @@ export default function Header(){
       <div className="header-left">
         <Link legacyBehavior href="/">
           <a className="logo-link" aria-label="The Odun Design home">
-            <Image src={OFFICIAL_LOGO} alt="The Odun Design logo" className="logo-image logo-image--large" width={180} height={45} />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={OFFICIAL_LOGO} alt="The Odun Design logo" className="logo-image logo-image--large" width={180} height={45} />
             <div className="logo-copy">
               <span className="logo-title">The Odun Design</span>
               <span className="logo-tagline">Creative digital solutions</span>

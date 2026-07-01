@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAuth } from '../../context/AuthContext'
 
@@ -145,7 +144,8 @@ export default function MobileMenu({ open, onClose, onSearchOpen }){
         >
           <div className="mobile-header">
             <div className="mobile-header-brand">
-              <Image src={OFFICIAL_LOGO} alt="The Odun Design logo" className="mobile-logo-image mobile-logo-image--large" width={140} height={35} />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={OFFICIAL_LOGO} alt="The Odun Design logo" className="mobile-logo-image mobile-logo-image--large" width={140} height={35} />
               <div className="mobile-branding">
                 <div className="mobile-logo-label">The Odun Design</div>
                 <div className="mobile-logo-copy">Creative digital solutions</div>

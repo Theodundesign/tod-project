@@ -41,8 +41,9 @@ const fs = require('fs');
       } catch(e){}
     });
 
-    const resp = await page.goto(url, {waitUntil: 'networkidle2', timeout: 45000});
-    await new Promise(res => setTimeout(res, 700)); // allow any late console messages
+    const resp = await page.goto(url, {waitUntil: 'domcontentloaded', timeout: 45000});
+    await page.waitForFunction(() => document.readyState === 'complete' && document.body && document.body.innerText.trim().length > 0, {timeout: 30000});
+    await new Promise(res => setTimeout(res, 1500)); // allow any late console messages and hydration
 
     // DOM checks
     const dom = await page.evaluate(() => {

@@ -9,8 +9,11 @@ export default function ProtectedRoute({ children, adminOnly=false }){
   useEffect(()=>{
     if(!loading){
       if(!user) {
-        const redirect = encodeURIComponent(router.asPath || '/')
-        router.replace(`/login?redirect=${redirect}`)
+        const authPaths = ['/login', '/register', '/forgot', '/auth']
+        if (!authPaths.some((path) => router.pathname.startsWith(path))) {
+          const redirect = encodeURIComponent(router.asPath || '/')
+          router.replace(`/login?redirect=${redirect}`)
+        }
         return
       }
       if(adminOnly && profile?.role !== 'admin') router.replace('/dashboard')

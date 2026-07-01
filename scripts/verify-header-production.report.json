@@ -1,0 +1,454 @@
+{
+  "url": "https://tod-project-theodundesign-1816-theodundesign-1816s-projects.vercel.app/",
+  "runs": [
+    {
+      "viewport": "desktop",
+      "width": 1440,
+      "status": 200,
+      "dom": {
+        "noHorizontalScroll": true,
+        "overlaps": [],
+        "clipped": [],
+        "headerRect": {},
+        "buttons": [
+          {
+            "text": "🔎",
+            "w": 44,
+            "h": 44,
+            "x": 1024,
+            "r": 1068
+          },
+          {
+            "text": "Login",
+            "w": 98,
+            "h": 53,
+            "x": 1084,
+            "r": 1182
+          },
+          {
+            "text": "Register",
+            "w": 80,
+            "h": 41,
+            "x": 1194,
+            "r": 1274
+          },
+          {
+            "text": "Start an Order",
+            "w": 124,
+            "h": 41,
+            "x": 1302,
+            "r": 1426
+          },
+          {
+            "text": "",
+            "w": 0,
+            "h": 0,
+            "x": 0,
+            "r": 0
+          },
+          {
+            "text": "Explore Services →",
+            "w": 212,
+            "h": 52,
+            "x": 132,
+            "r": 344
+          },
+          {
+            "text": "Start an Order",
+            "w": 176,
+            "h": 54,
+            "x": 360,
+            "r": 536
+          },
+          {
+            "text": "Learn the story",
+            "w": 260,
+            "h": 53,
+            "x": 241,
+            "r": 501
+          },
+          {
+            "text": "Start your project",
+            "w": 187,
+            "h": 53,
+            "x": 517,
+            "r": 704
+          },
+          {
+            "text": "Start an Order",
+            "w": 120,
+            "h": 41,
+            "x": 571,
+            "r": 691
+          },
+          {
+            "text": "View Dashboard",
+            "w": 177,
+            "h": 53,
+            "x": 691,
+            "r": 869
+          }
+        ],
+        "viewportWidth": 1440,
+        "authCardFitsViewport": true,
+        "authCardRect": null,
+        "authButtons": []
+      },
+      "consoleErrors": [
+        {
+          "type": "error",
+          "text": "Loading the image 'https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/theodundesign-e1782575369588.png' violates the following Content Security Policy directive: \"img-src 'self' data: blob: https://www.google-analytics.com https://www.google.com https://images.unsplash.com https://firebasestorage.googleapis.com https://storage.googleapis.com https://checkout.paystack.com https://js.paystack.co\". The action has been blocked."
+        },
+        {
+          "type": "error",
+          "text": "Loading the image 'https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/theodundesign-e1782575369588.png' violates the following Content Security Policy directive: \"img-src 'self' data: blob: https://www.google-analytics.com https://www.google.com https://images.unsplash.com https://firebasestorage.googleapis.com https://storage.googleapis.com https://checkout.paystack.com https://js.paystack.co\". The action has been blocked."
+        },
+        {
+          "type": "error",
+          "text": "Loading the image 'https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/Igbaoyinboprofile.png' violates the following Content Security Policy directive: \"img-src 'self' data: blob: https://www.google-analytics.com https://www.google.com https://images.unsplash.com https://firebasestorage.googleapis.com https://storage.googleapis.com https://checkout.paystack.com https://js.paystack.co\". The action has been blocked."
+        },
+        {
+          "type": "error",
+          "text": "Loading the image 'https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/theodundesign-e1782575369588.png' violates the following Content Security Policy directive: \"img-src 'self' data: blob: https://www.google-analytics.com https://www.google.com https://images.unsplash.com https://firebasestorage.googleapis.com https://storage.googleapis.com https://checkout.paystack.com https://js.paystack.co\". The action has been blocked."
+        },
+        {
+          "type": "error",
+          "text": "Loading the image 'https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/Igbaoyinboprofile.png' violates the following Content Security Policy directive: \"img-src 'self' data: blob: https://www.google-analytics.com https://www.google.com https://images.unsplash.com https://firebasestorage.googleapis.com https://storage.googleapis.com https://checkout.paystack.com https://js.paystack.co\". The action has been blocked."
+        },
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()"
+        },
+        {
+          "type": "error",
+          "text": "Loading the script 'https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.7.2/axe.min.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com https://www.gstatic.com https://js.paystack.co https://checkout.paystack.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked."
+        }
+      ],
+      "hydrationWarnings": [],
+      "badResponses": [
+        {
+          "url": "https://tod-project-theodundesign-1816-theodundesign-1816s-projects.vercel.app/favicon.ico",
+          "status": 404,
+          "ok": false,
+          "resourceType": "other"
+        }
+      ],
+      "failedRequests": [
+        {
+          "url": "https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/theodundesign-e1782575369588.png"
+        },
+        {
+          "url": "https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/theodundesign-e1782575369588.png"
+        },
+        {
+          "url": "https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/Igbaoyinboprofile.png"
+        },
+        {
+          "url": "https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/theodundesign-e1782575369588.png"
+        },
+        {
+          "url": "https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/Igbaoyinboprofile.png"
+        },
+        {
+          "url": "https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.7.2/axe.min.js"
+        }
+      ],
+      "layoutShiftEntries": [],
+      "axeResult": {
+        "error": "Error: Could not load script"
+      }
+    },
+    {
+      "viewport": "tablet",
+      "width": 820,
+      "status": 304,
+      "dom": {
+        "noHorizontalScroll": false,
+        "overlaps": [],
+        "clipped": [],
+        "headerRect": {},
+        "buttons": [
+          {
+            "text": "🔎",
+            "w": 44,
+            "h": 44,
+            "x": 489,
+            "r": 533
+          },
+          {
+            "text": "Login",
+            "w": 98,
+            "h": 53,
+            "x": 543,
+            "r": 641
+          },
+          {
+            "text": "Register",
+            "w": 80,
+            "h": 41,
+            "x": 649,
+            "r": 729
+          },
+          {
+            "text": "Start an Order",
+            "w": 0,
+            "h": 0,
+            "x": 0,
+            "r": 0
+          },
+          {
+            "text": "",
+            "w": 44,
+            "h": 44,
+            "x": 739,
+            "r": 783
+          },
+          {
+            "text": "Explore Services →",
+            "w": 212,
+            "h": 52,
+            "x": 32,
+            "r": 244
+          },
+          {
+            "text": "Start an Order",
+            "w": 176,
+            "h": 54,
+            "x": 32,
+            "r": 208
+          },
+          {
+            "text": "Learn the story",
+            "w": 130,
+            "h": 53,
+            "x": 61,
+            "r": 191
+          },
+          {
+            "text": "Start your project",
+            "w": 187,
+            "h": 53,
+            "x": 207,
+            "r": 394
+          },
+          {
+            "text": "Start an Order",
+            "w": 120,
+            "h": 41,
+            "x": 261,
+            "r": 381
+          },
+          {
+            "text": "View Dashboard",
+            "w": 177,
+            "h": 53,
+            "x": 381,
+            "r": 559
+          }
+        ],
+        "viewportWidth": 820,
+        "authCardFitsViewport": true,
+        "authCardRect": null,
+        "authButtons": []
+      },
+      "consoleErrors": [
+        {
+          "type": "error",
+          "text": "Loading the image 'https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/theodundesign-e1782575369588.png' violates the following Content Security Policy directive: \"img-src 'self' data: blob: https://www.google-analytics.com https://www.google.com https://images.unsplash.com https://firebasestorage.googleapis.com https://storage.googleapis.com https://checkout.paystack.com https://js.paystack.co\". The action has been blocked."
+        },
+        {
+          "type": "error",
+          "text": "Loading the image 'https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/theodundesign-e1782575369588.png' violates the following Content Security Policy directive: \"img-src 'self' data: blob: https://www.google-analytics.com https://www.google.com https://images.unsplash.com https://firebasestorage.googleapis.com https://storage.googleapis.com https://checkout.paystack.com https://js.paystack.co\". The action has been blocked."
+        },
+        {
+          "type": "error",
+          "text": "Loading the image 'https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/Igbaoyinboprofile.png' violates the following Content Security Policy directive: \"img-src 'self' data: blob: https://www.google-analytics.com https://www.google.com https://images.unsplash.com https://firebasestorage.googleapis.com https://storage.googleapis.com https://checkout.paystack.com https://js.paystack.co\". The action has been blocked."
+        },
+        {
+          "type": "error",
+          "text": "Loading the image 'https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/theodundesign-e1782575369588.png' violates the following Content Security Policy directive: \"img-src 'self' data: blob: https://www.google-analytics.com https://www.google.com https://images.unsplash.com https://firebasestorage.googleapis.com https://storage.googleapis.com https://checkout.paystack.com https://js.paystack.co\". The action has been blocked."
+        },
+        {
+          "type": "error",
+          "text": "Loading the image 'https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/Igbaoyinboprofile.png' violates the following Content Security Policy directive: \"img-src 'self' data: blob: https://www.google-analytics.com https://www.google.com https://images.unsplash.com https://firebasestorage.googleapis.com https://storage.googleapis.com https://checkout.paystack.com https://js.paystack.co\". The action has been blocked."
+        },
+        {
+          "type": "error",
+          "text": "Loading the script 'https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.7.2/axe.min.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com https://www.gstatic.com https://js.paystack.co https://checkout.paystack.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked."
+        }
+      ],
+      "hydrationWarnings": [],
+      "badResponses": [],
+      "failedRequests": [
+        {
+          "url": "https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/theodundesign-e1782575369588.png"
+        },
+        {
+          "url": "https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/theodundesign-e1782575369588.png"
+        },
+        {
+          "url": "https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/Igbaoyinboprofile.png"
+        },
+        {
+          "url": "https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/theodundesign-e1782575369588.png"
+        },
+        {
+          "url": "https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/Igbaoyinboprofile.png"
+        },
+        {
+          "url": "https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.7.2/axe.min.js"
+        }
+      ],
+      "layoutShiftEntries": [],
+      "axeResult": {
+        "error": "Error: Could not load script"
+      }
+    },
+    {
+      "viewport": "mobile",
+      "width": 375,
+      "status": 304,
+      "dom": {
+        "noHorizontalScroll": false,
+        "overlaps": [],
+        "clipped": [],
+        "headerRect": {},
+        "buttons": [
+          {
+            "text": "🔎",
+            "w": 44,
+            "h": 44,
+            "x": 189,
+            "r": 233
+          },
+          {
+            "text": "Login",
+            "w": 98,
+            "h": 53,
+            "x": 241,
+            "r": 339
+          },
+          {
+            "text": "Register",
+            "w": 80,
+            "h": 41,
+            "x": 347,
+            "r": 427
+          },
+          {
+            "text": "Start an Order",
+            "w": 0,
+            "h": 0,
+            "x": 0,
+            "r": 0
+          },
+          {
+            "text": "",
+            "w": 44,
+            "h": 44,
+            "x": 435,
+            "r": 479
+          },
+          {
+            "text": "Explore Services →",
+            "w": 212,
+            "h": 52,
+            "x": 32,
+            "r": 244
+          },
+          {
+            "text": "Start an Order",
+            "w": 176,
+            "h": 54,
+            "x": 32,
+            "r": 208
+          },
+          {
+            "text": "Learn the story",
+            "w": 110,
+            "h": 62,
+            "x": 61,
+            "r": 171
+          },
+          {
+            "text": "Start your project",
+            "w": 110,
+            "h": 98,
+            "x": 61,
+            "r": 171
+          },
+          {
+            "text": "Start an Order",
+            "w": 120,
+            "h": 41,
+            "x": 127,
+            "r": 248
+          },
+          {
+            "text": "View Dashboard",
+            "w": 177,
+            "h": 53,
+            "x": 99,
+            "r": 276
+          }
+        ],
+        "viewportWidth": 375,
+        "authCardFitsViewport": true,
+        "authCardRect": null,
+        "authButtons": []
+      },
+      "consoleErrors": [
+        {
+          "type": "error",
+          "text": "Loading the image 'https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/theodundesign-e1782575369588.png' violates the following Content Security Policy directive: \"img-src 'self' data: blob: https://www.google-analytics.com https://www.google.com https://images.unsplash.com https://firebasestorage.googleapis.com https://storage.googleapis.com https://checkout.paystack.com https://js.paystack.co\". The action has been blocked."
+        },
+        {
+          "type": "error",
+          "text": "Loading the image 'https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/theodundesign-e1782575369588.png' violates the following Content Security Policy directive: \"img-src 'self' data: blob: https://www.google-analytics.com https://www.google.com https://images.unsplash.com https://firebasestorage.googleapis.com https://storage.googleapis.com https://checkout.paystack.com https://js.paystack.co\". The action has been blocked."
+        },
+        {
+          "type": "error",
+          "text": "Loading the image 'https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/Igbaoyinboprofile.png' violates the following Content Security Policy directive: \"img-src 'self' data: blob: https://www.google-analytics.com https://www.google.com https://images.unsplash.com https://firebasestorage.googleapis.com https://storage.googleapis.com https://checkout.paystack.com https://js.paystack.co\". The action has been blocked."
+        },
+        {
+          "type": "error",
+          "text": "Loading the image 'https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/theodundesign-e1782575369588.png' violates the following Content Security Policy directive: \"img-src 'self' data: blob: https://www.google-analytics.com https://www.google.com https://images.unsplash.com https://firebasestorage.googleapis.com https://storage.googleapis.com https://checkout.paystack.com https://js.paystack.co\". The action has been blocked."
+        },
+        {
+          "type": "error",
+          "text": "Loading the image 'https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/Igbaoyinboprofile.png' violates the following Content Security Policy directive: \"img-src 'self' data: blob: https://www.google-analytics.com https://www.google.com https://images.unsplash.com https://firebasestorage.googleapis.com https://storage.googleapis.com https://checkout.paystack.com https://js.paystack.co\". The action has been blocked."
+        },
+        {
+          "type": "error",
+          "text": "Loading the script 'https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.7.2/axe.min.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com https://www.gstatic.com https://js.paystack.co https://checkout.paystack.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked."
+        }
+      ],
+      "hydrationWarnings": [],
+      "badResponses": [],
+      "failedRequests": [
+        {
+          "url": "https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/theodundesign-e1782575369588.png"
+        },
+        {
+          "url": "https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/theodundesign-e1782575369588.png"
+        },
+        {
+          "url": "https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/Igbaoyinboprofile.png"
+        },
+        {
+          "url": "https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/theodundesign-e1782575369588.png"
+        },
+        {
+          "url": "https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/Igbaoyinboprofile.png"
+        },
+        {
+          "url": "https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.7.2/axe.min.js"
+        }
+      ],
+      "layoutShiftEntries": [],
+      "axeResult": {
+        "error": "Error: Could not load script"
+      }
+    }
+  ]
+}

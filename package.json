@@ -10,7 +10,7 @@
   },
   "scripts": {
     "dev": "node scripts/validate-env.js && next dev",
-    "build": "node scripts/validate-env.js && next build",
+    "build": "NODE_ENV=production node scripts/validate-env.js && next build",
     "start": "next start",
     "test:rate-limiter": "node scripts/test-rate-limiter.js",
     "check:env": "node scripts/validate-env.js",

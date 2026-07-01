@@ -50,6 +50,7 @@ export default function AuthPage(){
   const [password,setPassword] = useState('')
   const [loading,setLoading] = useState(false)
   const [error,setError] = useState('')
+  const [notice,setNotice] = useState('')
   const [showPwd,setShowPwd] = useState(false)
   const router = useRouter()
 
@@ -88,14 +89,33 @@ export default function AuthPage(){
   }
 
   async function handleForgot(){
-    if(!email) { setError('Please enter your email address to reset your password.'); return }
-    setLoading(true); setError('')
-    try{ 
+    if(!email) {
+      setError('Please enter your email address to reset your password.')
+      setNotice('')
+      return
+    }
+
+    setLoading(true)
+    setError('')
+    setNotice('')
+    try{
       const { auth } = await import('../firebase/firebaseClient')
       const { sendPasswordResetEmail } = await import('firebase/auth')
-      await sendPasswordResetEmail(auth,email)
-      setError('Password reset link sent to ' + email + '. Check your inbox or spam folder.')
-    }catch(err){ setError(formatAuthError(err.message)) }
+      const continueUrl = typeof window !== 'undefined'
+        ? `${window.location.origin}`
+        : process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+      const actionCodeSettings = {
+        url: `${continueUrl}/login`,
+        handleCodeInApp: false
+      }
+      console.debug('Password reset actionCodeSettings', actionCodeSettings)
+      await sendPasswordResetEmail(auth,email,actionCodeSettings)
+      setNotice('If this email is registered, a password reset link has been requested. Check your inbox or spam folder.')
+    }catch(err){
+      console.error('Password reset failed:', err.code, err.message, err)
+      setError(formatAuthError(err.message || err.code || err.toString()))
+      setNotice('')
+    }
     setLoading(false)
   }
 
@@ -116,6 +136,7 @@ export default function AuthPage(){
             <button type="button" className="pwd-toggle" onClick={()=>setShowPwd(s=>!s)}>{showPwd? 'Hide':'Show'}</button>
           </div>
           {error && <div className="auth-error">{error}</div>}
+          {notice && <div className="auth-note">{notice}</div>}
           <div style={{display:'flex',gap:8,marginTop:12}}>
             <button className="btn-primary" disabled={loading}>{loading? 'Loading...':'Sign in'}</button>
             <button type="button" className="btn-ghost" onClick={handleSignup} disabled={loading}>{loading? '...' : 'Sign up'}</button>

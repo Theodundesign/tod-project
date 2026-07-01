@@ -1,6 +1,5 @@
 import React from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 
 const OFFICIAL_LOGO = 'https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/theodundesign-e1782575369588.png'
 const FOUNDER_IMAGE = 'https://www.afmgoldenbakeryfoods.com/wp-content/uploads/2026/06/Igbaoyinboprofile.png'
@@ -12,7 +11,8 @@ export default function Footer(){
         <div className="footer-brand">
           <Link legacyBehavior href="/">
             <a className="footer-logo-link" aria-label="The Odun Design home">
-              <Image src={OFFICIAL_LOGO} alt="The Odun Design logo" className="footer-logo-image footer-logo-image--large" width={180} height={45} />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={OFFICIAL_LOGO} alt="The Odun Design logo" className="footer-logo-image footer-logo-image--large" width={180} height={45} loading="lazy" decoding="async" />
               <div className="footer-logo-copy">
                 <span>The Odun Design</span>
               </div>
@@ -50,7 +50,8 @@ export default function Footer(){
         <div className="footer-founder">
           <h4>Founder</h4>
           <div className="founder-profile">
-            <Image src={FOUNDER_IMAGE} alt="Igbaoyinbo Odunayo" className="founder-image" width={64} height={64} />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={FOUNDER_IMAGE} alt="Igbaoyinbo Odunayo" className="founder-image" width={64} height={64} loading="lazy" decoding="async" />
             <div>
               <p className="founder-name">Igbaoyinbo Odunayo</p>
               <p className="founder-role">CEO & Founder</p>

@@ -2,6 +2,6 @@
 
 Status: FAILURE
 
-Error: Error: failed to find element matching selector "input[name="businessName"]"
+Error: Waiting for selector `input[name="businessName"]` failed
 
 See console for details.

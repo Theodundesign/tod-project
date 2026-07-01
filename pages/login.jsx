@@ -4,6 +4,23 @@ import { useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useAuth } from '../context/AuthContext'
 
+function formatAuthError(error){
+  if (!error) return 'Login failed. Please try again.'
+  const message = error.message || error.toString()
+  if (message.includes('auth/user-not-found')) return 'No account found for that email.'
+  if (message.includes('auth/wrong-password') || message.includes('auth/invalid-login-credentials')) return 'Email or password is incorrect. Please try again.'
+  if (message.includes('auth/invalid-email')) return 'Please enter a valid email address.'
+  if (message.includes('auth/too-many-requests')) return 'Too many login attempts. Please wait a moment.'
+  if (message.includes('auth/user-disabled')) return 'This account has been disabled. Contact support.'
+  if (message.includes('auth/popup-closed-by-user')) return 'Google sign-in was cancelled. Please try again.'
+  if (message.includes('auth/popup-blocked')) return 'Google sign-in was blocked. Allow pop-ups and try again.'
+  if (message.includes('auth/cancelled-popup-request')) return 'Google sign-in was interrupted. Please try again.'
+  if (message.includes('auth/account-exists-with-different-credential')) return 'An account with this email already exists with a different sign-in method.'
+  if (message.includes('auth/operation-not-allowed')) return 'This sign-in method is not enabled for this project.'
+  if (message.includes('auth/network-request-failed')) return 'Network error. Check your connection and try again.'
+  return message
+}
+
 export default function LoginPage(){
   const { login, googleSignIn, user, loading } = useAuth()
   const [email,setEmail]=useState('')
@@ -18,8 +35,15 @@ export default function LoginPage(){
     const redirect = router.query.redirect
     const raw = Array.isArray(redirect) ? redirect[0] : redirect
     if (typeof raw === 'string' && raw.trim()) {
-      try { return decodeURIComponent(raw) } catch {
-        return raw
+      try {
+        const decoded = decodeURIComponent(raw)
+        if (decoded.startsWith('/') && !/^\/(login|register|forgot|auth)/.test(decoded)) {
+          return decoded
+        }
+      } catch {
+        if (raw.startsWith('/') && !/^(\/(login|register|forgot|auth))/.test(raw)) {
+          return raw
+        }
       }
     }
     return '/dashboard'
@@ -40,7 +64,8 @@ export default function LoginPage(){
       await login(email, password)
       setShouldRedirect(true)
     }catch(e){
-      setErr(e?.message || 'Login failed. Please try again.')
+      console.error('Login failed:', e)
+      setErr(formatAuthError(e))
     }
     setLoadingState(false)
   }
@@ -52,7 +77,8 @@ export default function LoginPage(){
       await googleSignIn()
       setShouldRedirect(true)
     }catch(e){
-      setErr(e?.message || 'Google sign in failed.')
+      console.error('Google login failed:', e)
+      setErr(formatAuthError(e))
     }
     setLoadingState(false)
   }

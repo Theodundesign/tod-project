@@ -1,6 +1,7 @@
 import { adminDb } from '../../../firebase/firebaseAdmin'
 import { checkRateLimit } from '../../../lib/rateLimiter'
 import { verifyPaystackSignature, validatePaystackPayload } from '../../../lib/paystackWebhook'
+import { processPaystackPayment } from '../../../lib/paymentProcessor'
 
 export const config = {
   api: {
@@ -90,24 +91,14 @@ export default async function handler(req, res){
       payload,
     })
 
-    const orderQuery = await adminDb.collection('orders').where('paymentReference', '==', reference).get()
-    if (!orderQuery.empty) {
-      const { updatePaymentStatus, PAYMENT_STATUSES } = await import('../../../lib/orderHelpers')
-      const paymentData = payload.data || {}
-      
-      // Determine payment status
-      const paymentStatus = status === 'success' ? PAYMENT_STATUSES.PAID : status === 'failed' ? PAYMENT_STATUSES.FAILED : PAYMENT_STATUSES.PENDING
-      
-      orderQuery.forEach(async (doc) => {
-        const currentOrder = doc.data()
-        const updates = updatePaymentStatus(currentOrder, paymentStatus, reference)
-        await doc.ref.update({
-          ...updates,
-          paymentData,
-          paymentSource: 'Paystack'
-        })
-      })
-    }
+    const paymentData = payload.data || {}
+    const metadata = paymentData.metadata || {}
+    await processPaystackPayment({
+      reference,
+      status,
+      paymentData,
+      metadata
+    })
 
     await adminDb.collection('paystack_webhook_audit').add({
       eventId,

@@ -169,7 +169,11 @@ const testUser = {
     process.exit(0)
   }catch(err){
     console.error('Test encountered error:', err)
-    try{ await browser.close() }catch(e){ /* ignore */ }
+      try{
+        await browser.close()
+      }catch(e){
+        console.debug('Unable to close browser after error:', e)
+      }
     const fs = require('fs')
     fs.writeFileSync('LIVE-FIREBASE-TEST-REPORT.md', `# LIVE Firebase Test Report\n\nStatus: FAILURE\n\nError: ${err.message}\n\nSee console for details.\n`)
     process.exit(3)

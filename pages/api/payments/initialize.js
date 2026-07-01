@@ -7,6 +7,7 @@ export default async function handler(req, res) {
   const {
     userId,
     email,
+    orderId,
     category,
     service,
     packageName,
@@ -17,7 +18,7 @@ export default async function handler(req, res) {
     callbackUrl
   } = req.body || {}
 
-  if (!userId || !email || !service || !packageName || !amount || !reference || !callbackUrl) {
+  if (!userId || !email || !orderId || !service || !packageName || !amount || !reference || !callbackUrl) {
     return res.status(400).json({ error: 'Missing required payment or order information.' })
   }
 
@@ -31,19 +32,37 @@ export default async function handler(req, res) {
   }
 
   try {
-    const orderRef = await adminDb.collection('orders').add({
+    const orderDoc = await adminDb.collection('orders').doc(orderId).get()
+    if (!orderDoc.exists) {
+      return res.status(404).json({ error: 'Order not found for payment initialization.' })
+    }
+
+    const orderData = orderDoc.data() || {}
+    await orderDoc.ref.update({
+      paymentReference: reference,
+      paymentMethod: 'Paystack',
+      paymentStatus: 'Pending',
+      updatedAt: new Date(),
+      orderInitializedAt: new Date()
+    })
+
+    await adminDb.collection('payments').add({
       userId,
-      email,
-      category,
+      orderId,
+      orderReference: orderData.reference || '',
       service,
       packageName,
+      category,
       amount,
-      description,
-      files: files || [],
-      paymentReference: reference,
-      status: 'payment_pending',
+      currency: 'NGN',
+      description: description || orderData.description || '',
+      files: files || orderData.files || [],
+      reference,
+      paymentMethod: 'Paystack',
+      status: 'Pending',
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
+      transactionDate: new Date()
     })
 
     const transaction = await createPaystackTransaction({
@@ -52,7 +71,7 @@ export default async function handler(req, res) {
       reference,
       callbackUrl,
       metadata: {
-        orderId: orderRef.id,
+        orderId,
         service,
         packageName,
         category,
@@ -63,7 +82,7 @@ export default async function handler(req, res) {
     return res.status(200).json({
       authorization_url: transaction.authorization_url,
       reference: transaction.reference,
-      orderId: orderRef.id
+      orderId
     })
   } catch (error) {
     console.error('Payment initialization error:', error)

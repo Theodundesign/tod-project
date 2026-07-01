@@ -5,19 +5,21 @@ if (!admin.apps.length) {
   // Prefer service account from env as JSON string or file path in production
   const key = process.env.FIREBASE_SERVICE_ACCOUNT || process.env.FIREBASE_SERVICE_ACCOUNT_JSON || ''
   let cred = null
-  try{
-    if(key.startsWith('{')){
-      cred = JSON.parse(key)
-    }else if(key && fs.existsSync(key)){
-      cred = JSON.parse(fs.readFileSync(key, 'utf8'))
+  if (key) {
+    try {
+      cred = key.trim().startsWith('{')
+        ? JSON.parse(key)
+        : JSON.parse(fs.readFileSync(key, 'utf8'))
+    } catch (e) {
+      throw new Error(
+        `Invalid Firebase service account credential provided in FIREBASE_SERVICE_ACCOUNT or FIREBASE_SERVICE_ACCOUNT_JSON: ${e.message}`
+      )
     }
-  }catch(e){
-    console.error('Failed to parse Firebase service account:', e.message)
   }
 
-  if(cred){
+  if (cred) {
     admin.initializeApp({ credential: admin.credential.cert(cred), storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET })
-  }else{
+  } else {
     // fallback to application default
     admin.initializeApp()
   }

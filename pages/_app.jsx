@@ -11,12 +11,16 @@ import { AuthProvider } from '../context/AuthContext'
 import { ToastProvider } from '../components/ui/ToastContext'
 import Header from '../components/navigation/Header'
 import Footer from '../components/Footer'
+import Head from 'next/head'
 
-const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID
+const rawGaId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || ''
+const GA_ID = rawGaId.startsWith('G-') && !rawGaId.includes('XXXX') ? rawGaId : ''
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://theodundesign.com'
 
 export default function MyApp({ Component, pageProps }) {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
+  const canonicalUrl = `${siteUrl}${router.asPath === '/' ? '' : router.asPath}`
 
   useEffect(() => {
     const handleStart = () => setLoading(true)
@@ -45,6 +49,20 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <AuthProvider>
       <ToastProvider>
+        <Head>
+          <title>The Odun Design</title>
+          <meta name="description" content="Premium digital agency for branding, web, app, and training services." />
+          <meta name="theme-color" content="#05060a" />
+          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+          <meta property="og:type" content="website" />
+          <meta property="og:site_name" content="The Odun Design" />
+          <meta property="og:title" content="The Odun Design" />
+          <meta property="og:description" content="Premium digital agency for branding, web, app, and training services." />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="The Odun Design" />
+          <meta name="twitter:description" content="Premium digital agency for branding, web, app, and training services." />
+          <link rel="canonical" href={canonicalUrl} />
+        </Head>
         {GA_ID && (
           <>
             <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
