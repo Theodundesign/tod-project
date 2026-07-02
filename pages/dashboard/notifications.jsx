@@ -14,17 +14,32 @@ export default function DashboardNotifications(){
     ;(async ()=>{
       try{
         const fb = await import('../../firebase/firebaseClient')
+        console.log('=== NOTIFICATIONS DEBUG ===')
+        console.log('Authenticated user.uid:', user.uid)
+        console.log('Firebase app config project:', fb.db?.app?.options?.projectId)
         const { collection, query, where, onSnapshot, orderBy } = await import('firebase/firestore')
         const q = query(collection(fb.db,'notifications'), where('userId','==', user.uid), orderBy('createdAt','desc'))
         unsub = onSnapshot(q, snap => {
+          console.log('Firestore notifications query succeeded, docs count:', snap.docs.length)
+          snap.docs.forEach(doc => {
+            console.log('Notification doc:', { id: doc.id, userId: doc.data().userId, docData: doc.data() })
+          })
           setNotifications(snap.docs.map(doc => ({ id: doc.id, ...doc.data() })))
           setLoading(false)
         }, error => {
-          console.error(error)
+          console.error('=== NOTIFICATIONS FIRESTORE ERROR ===')
+          console.error('error.code:', error?.code)
+          console.error('error.message:', error?.message)
+          console.error('error.customData:', error?.customData)
+          console.error('Full error object:', error)
+          console.error('Comparing: request.auth.uid =', user.uid, 'vs resource.data.userId')
           setLoading(false)
         })
       }catch(e){
-        console.error(e)
+        console.error('=== NOTIFICATIONS ASYNC ERROR ===')
+        console.error('error.code:', e?.code)
+        console.error('error.message:', e?.message)
+        console.error('Full error object:', e)
         setLoading(false)
       }
     })()

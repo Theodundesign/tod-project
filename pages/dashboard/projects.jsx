@@ -17,19 +17,34 @@ export default function Projects(){
     ;(async () => {
       try {
         const fb = await import('../../firebase/firebaseClient')
+        console.log('=== PROJECTS DEBUG ===')
+        console.log('Authenticated user.uid:', user.uid)
+        console.log('Firebase app config project:', fb.db?.app?.options?.projectId)
         const { collection, query, where, onSnapshot, orderBy } = await import('firebase/firestore')
         const projectsQuery = query(collection(fb.db, 'projects'), where('userId', '==', user.uid), orderBy('deadline', 'asc'))
         unsub = onSnapshot(projectsQuery, (snapshot) => {
+          console.log('Firestore projects query succeeded, docs count:', snapshot.docs.length)
+          snapshot.docs.forEach(doc => {
+            console.log('Project doc:', { id: doc.id, userId: doc.data().userId, uid: doc.data().uid, docData: doc.data() })
+          })
           setProjects(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })))
           setLoading(false)
           setError('')
         }, (error) => {
-          console.error(error)
+          console.error('=== PROJECTS FIRESTORE ERROR ===')
+          console.error('error.code:', error?.code)
+          console.error('error.message:', error?.message)
+          console.error('error.customData:', error?.customData)
+          console.error('Full error object:', error)
+          console.error('Comparing: request.auth.uid =', user.uid, 'vs resource.data.userId')
           setError('Failed to load projects. Please refresh the page or try again in a moment.')
           setLoading(false)
         })
       } catch (err) {
-        console.error(err)
+        console.error('=== PROJECTS ASYNC ERROR ===')
+        console.error('error.code:', err?.code)
+        console.error('error.message:', err?.message)
+        console.error('Full error object:', err)
         setError('Unable to load your projects. Please check your connection and try again.')
         setLoading(false)
       }

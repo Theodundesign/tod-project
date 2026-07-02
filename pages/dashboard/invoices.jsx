@@ -14,17 +14,32 @@ export default function DashboardInvoices(){
     ;(async ()=>{
       try{
         const fb = await import('../../firebase/firebaseClient')
+        console.log('=== INVOICES DEBUG ===')
+        console.log('Authenticated user.uid:', user.uid)
+        console.log('Firebase app config project:', fb.db?.app?.options?.projectId)
         const { collection, query, where, onSnapshot, orderBy } = await import('firebase/firestore')
         const q = query(collection(fb.db,'invoices'), where('userId','==', user.uid), orderBy('createdAt','desc'))
         unsub = onSnapshot(q, snap => {
+          console.log('Firestore invoices query succeeded, docs count:', snap.docs.length)
+          snap.docs.forEach(doc => {
+            console.log('Invoice doc:', { id: doc.id, userId: doc.data().userId, docData: doc.data() })
+          })
           setInvoices(snap.docs.map(doc => ({ id: doc.id, ...doc.data() })))
           setLoading(false)
         }, error => {
-          console.error(error)
+          console.error('=== INVOICES FIRESTORE ERROR ===')
+          console.error('error.code:', error?.code)
+          console.error('error.message:', error?.message)
+          console.error('error.customData:', error?.customData)
+          console.error('Full error object:', error)
+          console.error('Comparing: request.auth.uid =', user.uid, 'vs resource.data.userId')
           setLoading(false)
         })
       }catch(e){
-        console.error(e)
+        console.error('=== INVOICES ASYNC ERROR ===')
+        console.error('error.code:', e?.code)
+        console.error('error.message:', e?.message)
+        console.error('Full error object:', e)
         setLoading(false)
       }
     })()

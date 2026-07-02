@@ -3,12 +3,14 @@ import Link from 'next/link'
 import ProtectedRoute from '../../components/ProtectedRoute'
 import DashboardLayout from '../../components/dashboard/DashboardLayout'
 import { useAuth } from '../../context/AuthContext'
+import NewConversationModal from '../../components/conversations/NewConversationModal'
 
 export default function Messages(){
   const { user } = useAuth()
   const [conversations, setConversations] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const [modalOpen, setModalOpen] = useState(false)
 
   useEffect(() => {
     if (!user) return
@@ -51,9 +53,18 @@ export default function Messages(){
   return (
     <ProtectedRoute>
       <DashboardLayout>
-        <div className="section-title">
-          <h2>Messages</h2>
-          <p>View active conversations and respond to clients in real time.</p>
+        <div className="section-title" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+          <div>
+            <h2>Messages</h2>
+            <p>View active conversations and respond to clients in real time.</p>
+          </div>
+          <button
+            onClick={() => setModalOpen(true)}
+            className="btn btn-primary"
+            style={{ whiteSpace: 'nowrap', marginTop: '4px' }}
+          >
+            + New Message
+          </button>
         </div>
 
         {/* Error State */}
@@ -99,6 +110,8 @@ export default function Messages(){
           </div>
         )}
       </DashboardLayout>
+
+      <NewConversationModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </ProtectedRoute>
   )
 }

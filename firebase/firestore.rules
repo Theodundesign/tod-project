@@ -36,8 +36,8 @@ service cloud.firestore {
       match /messages/{messageId} {
         allow create: if request.auth != null && request.auth.uid in get(/databases/$(database)/documents/conversations/$(conversationId)).data.participants;
         allow read: if request.auth != null && request.auth.uid in get(/databases/$(database)/documents/conversations/$(conversationId)).data.participants;
-        allow update: if request.auth != null && request.auth.uid == resource.data.userId;
-        allow delete: if request.auth != null && (request.auth.uid == resource.data.userId || request.auth.token.role == 'admin');
+        allow update: if request.auth != null && request.auth.uid == resource.data.senderId;
+        allow delete: if request.auth != null && (request.auth.uid == resource.data.senderId || request.auth.token.role == 'admin');
       }
     }
 

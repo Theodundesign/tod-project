@@ -20,19 +20,34 @@ export default function Payments(){
     ;(async () => {
       try {
         const fb = await import('../../firebase/firebaseClient')
+        console.log('=== PAYMENTS DEBUG ===')
+        console.log('Authenticated user.uid:', user.uid)
+        console.log('Firebase app config project:', fb.db?.app?.options?.projectId)
         const { collection, query, where, onSnapshot, orderBy } = await import('firebase/firestore')
         const q = query(collection(fb.db, 'payments'), where('userId', '==', user.uid), orderBy('createdAt', 'desc'))
         unsub = onSnapshot(q, (snapshot) => {
+          console.log('Firestore payments query succeeded, docs count:', snapshot.docs.length)
+          snapshot.docs.forEach(doc => {
+            console.log('Payment doc:', { id: doc.id, userId: doc.data().userId, docData: doc.data() })
+          })
           setPayments(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })))
           setLoading(false)
           setError('')
         }, (error) => {
-          console.error(error)
+          console.error('=== PAYMENTS FIRESTORE ERROR ===')
+          console.error('error.code:', error?.code)
+          console.error('error.message:', error?.message)
+          console.error('error.customData:', error?.customData)
+          console.error('Full error object:', error)
+          console.error('Comparing: request.auth.uid =', user.uid, 'vs resource.data.userId')
           setError('Failed to load payments. Please refresh the page or try again in a moment.')
           setLoading(false)
         })
       } catch (err) {
-        console.error(err)
+        console.error('=== PAYMENTS ASYNC ERROR ===')
+        console.error('error.code:', err?.code)
+        console.error('error.message:', err?.message)
+        console.error('Full error object:', err)
         setError('Unable to load payment history. Please check your connection and try again.')
         setLoading(false)
       }
